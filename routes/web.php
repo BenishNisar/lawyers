@@ -3,25 +3,32 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccountLoginController;
 use App\Http\Controllers\AccountSettingsController;
+use App\Http\Controllers\AdministrationController;
 use App\Http\Controllers\BackendBlogController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\CategoryController;
 
 use App\Http\Controllers\BlogsDetailsController;
 use App\Http\Controllers\BusinessSectorController;
+use App\Http\Controllers\CareersController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DownloadsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SafeMarkController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\SoftwareController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use App\Models\Blog;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +56,17 @@ Route::get("/services",[ServicesController::class,"index"])->name("Home.services
 Route::get("/about",[AboutController::class,"index"])->name("Home.about");
 Route::get('/business-sectors', [BusinessSectorController::class, 'index'])
      ->name('Home.business-sectors');
+     Route::get('/administration', [AdministrationController::class, 'index'])
+     ->name('Home.administration');
+        Route::get('/softwares', [SoftwareController::class, 'index'])
+     ->name('Home.softwares');
+             Route::get('/downloads', [DownloadsController::class, 'index'])
+     ->name('Home.downloads');
+       Route::get('/careers', [CareersController::class, 'index'])
+     ->name('Home.careers');
+          Route::get('/clients', [ClientController::class, 'index'])
+     ->name('Home.clients');
+
 // frontend pages
 // backend pages
 Route::get("/dashboard",[DashboardController::class,"index"])->name("Dashboard.admin.dashboard");

@@ -223,11 +223,11 @@
 				       		</ul> <!-- End of .sub-menu -->
 				       </li>
               <li><a href="{{ route('Home.business-sectors') }}">Business Sectors</a></li>
-              <li><a href="{{ asset("/business_sectors") }}">Administration</a></li>
-              <li><a href="{{ asset("/software") }}">Softwares</a></li>
-                            <li><a href="{{ asset("/business_sectors") }}">Clients</a></li>
-                            <li><a href="{{ asset("/business_sectors") }}">Downloads</a></li>
-                            <li><a href="{{ asset("/business_sectors") }}">Jobs & Career</a></li>
+              <li><a href="{{ asset("/administration") }}">Administration</a></li>
+              <li><a href="{{ asset("/softwares") }}">Softwares</a></li>
+                           <li><a href="{{ asset("/clients") }}">Clients</a></li>
+                            <li><a href="{{ asset("/downloads") }}">Downloads</a></li>
+                            <li><a href="{{ asset("/careers") }}">Jobs & Career</a></li>
 
 
 				       {{-- <li class="dropdown"><a href="#">News</a>
@@ -265,7 +265,7 @@
                    <!-- /.navbar-collapse -->
 				</nav>
 
-				<div class="nav_right_area float_right">
+				{{-- <div class="nav_right_area float_right">
 					<div class="search_option float_left">
 				   		<button class="search tran3s dropdown-toggle" id="searchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search" aria-hidden="true"></i></button>
 				   		<form action="#" class="p_color_bg dropdown-menu" aria-labelledby="searchDropdown">
@@ -341,7 +341,7 @@
 				   		</div> <!-- End of .cart_list -->
 				   </div> <!-- End of .cart_option -->
 				   <div class="clear_fix"></div>
-				</div> <!-- End of .nav_right_area -->
+				</div> --}}
 			<div class="clear_fix"></div>
         	</div> <!-- End of .container -->
         </div> <!-- End of .main_menu -->
@@ -529,6 +529,7 @@
 
 		<script type="text/javascript" src="{{ asset("assets/js/theme.js") }}"></script>
 		<script src="{{ asset("assets/js/map-script.js") }}"></script>
+		<script src="{{ asset("assets/js/app.js") }}"></script>
 
 		</div>  <!-- End of .page_wrapper -->
 
@@ -655,4 +656,41 @@
 }
 </script>
 
+<script>
+(function(){
+  const search   = document.getElementById('clientSearch');
+  const chips    = document.querySelectorAll('.cl-chip');
+  const cards    = Array.from(document.querySelectorAll('.cl-card'));
+  const totalEl  = document.getElementById('clTotal');
+  let activeTag  = 'all';
+
+  function applyFilters(){
+    const q = (search.value || '').trim().toLowerCase();
+    let visible = 0;
+    cards.forEach(card=>{
+      const name = card.querySelector('.cl-name').textContent.toLowerCase();
+      const tags = (card.dataset.tags || '').toLowerCase();
+      const matchText = !q || name.includes(q);
+      const matchTag  = activeTag === 'all' || tags.includes(activeTag);
+      const show = matchText && matchTag;
+      card.style.display = show ? '' : 'none';
+      if(show) visible++;
+    });
+    totalEl.textContent = visible;
+  }
+
+  chips.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      chips.forEach(b=>b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      activeTag = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  search.addEventListener('input', applyFilters);
+  // initial count
+  applyFilters();
+})();
+</script>
 </html>
