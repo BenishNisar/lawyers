@@ -8,6 +8,7 @@ use App\Mail\ContactMail;
 use App\Mail\UserThankYouMail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Models\Banner;
 
 class WelcomeController extends Controller
 {
@@ -21,8 +22,13 @@ class WelcomeController extends Controller
                            ->latest()
                            ->take(3)
                            ->get();
+                        //    slides
+                        $slides = Banner::whereIn('id', [1,2,3])
+        ->orderByRaw('FIELD(id,1,2,3)')
+        ->get()
+        ->keyBy('id');
 
-        return view("Home.welcome", compact('featuredBlog', 'latestBlogs'));
+        return view("Home.welcome", compact('featuredBlog', 'latestBlogs','slides'));
     }
 
 

@@ -6,12 +6,16 @@
 
 		<!-- For IE -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 		<!-- For Resposive Device -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<title>Aziz Ismail & Co</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfZ6P35JfYx1pU8tR+6v3vB0s6H5c0vQyB+99lB3cD9Jm0sYF2T3Z0f8Xk3O3QvGvG0B4v8F4YkO5N2wC2RZrA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfZ6P35JfYx1pU8tR+6v3vB0s6H5c0vQyB+99lB3cD9Jm0sYF2T3Z0f8Xk3O3QvGvG0B4v8F4YkO5N2wC2RZrA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
+<!-- Font Awesome 5.15.4 (Free) + v4 shims -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/v4-shims.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 		<!-- Favicon -->
 		<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/images/fav-icon/apple-icon-57x57.png') }}">
@@ -142,9 +146,44 @@
         		<div class="row">
 	        		<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 header_left">
 	        			<ul>
-	        				<li><i class="fa fa-map-marker s_color" aria-hidden="true"></i><a href="#">001 Columbus Road, Floor 4, San Francisco CA 9100</a></li>
-	        				<li><i class="fa fa-phone s_color" aria-hidden="true"></i><a href="#">Contact Us! (222) 890 60 3919 </a></li>
-	        				<li><i class="fa fa-clock-o s_color" aria-hidden="true"></i><a href="#"> Mon to Sat : 8.00 - 18.00</a></li>
+	        				{{-- <li><i class="fa fa-map-marker s_color" aria-hidden="true"></i><a href="#">Email</a></li>
+	        				<li><i class="fa fa-phone s_color" aria-hidden="true"></i><a href="#">Contact Us! 0092-21-2772944-5, 2721357, 2721359, 2750546-7 </a></li> --}}
+
+@php
+  $contact = cache()->remember('contact_settings.first', 1800, fn () => \App\Models\ContactSetting::first());
+
+  $emails = collect(is_array($contact->emails ?? null) ? $contact->emails : json_decode($contact->emails ?? '[]', true))
+            ->map(fn($v)=>trim(trim((string)$v), " ,;"))->filter()->values();
+
+  $phones = collect(is_array($contact->phones ?? null) ? $contact->phones : json_decode($contact->phones ?? '[]', true))
+            ->map(fn($v)=>trim(trim((string)$v), " ,;"))->filter()->values();
+
+  $telHref = fn(string $p) => preg_replace('/[^0-9+]/','', $p);
+@endphp
+
+{{-- ✅ Email item (use envelope icon) --}}
+<li>
+  <i class="fas fa-envelope s_color" aria-hidden="true"></i>
+  @if($emails->isNotEmpty())
+    {!! $emails->map(fn($em)=>'<a href="mailto:'.e($em).'">'.e($em).'</a>')->implode(', ') !!}
+  @else
+    <a href="#">Email</a>
+  @endif
+</li>
+
+{{-- Phone item --}}
+<li>
+  <i class="fas fa-phone-alt s_color" aria-hidden="true"></i>
+  @if($phones->isNotEmpty())
+    @foreach($phones as $i => $ph)
+      <a href="tel:{{ $telHref($ph) }}">{{ $ph }}</a>@if($i < $phones->count()-1), @endif
+    @endforeach
+  @else
+    <a href="#">000-0000000</a>
+  @endif
+</li>
+
+                            {{-- <li><i class="fa fa-clock-o s_color" aria-hidden="true"></i><a href="#"> Mon to Sat : 8.00 - 18.00</a></li> --}}
 	        			</ul>
 	        		</div> <!-- End of .header_left -->
 	        		<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 header_right">
@@ -209,7 +248,7 @@
 				       			<li><a href="client-feedback.html">Client Feedback</a></li>
 				       		</ul> <!-- End of .sub-menu -->
 				       </li> --}}
-				       <li class="dropdown"><a href="{{ asset("/services") }}">Services</a>
+				       {{-- <li class="dropdown"><a href="{{ asset("/services") }}">Services</a>
 				       		<ul class="sub-menu fix">
 				       			<li><a href="service.html">Income Tax</a></li>
 				       			<li><a href="restructuring-turnaround.html">Sales TAX</a></li>
@@ -218,15 +257,25 @@
 				       			<li><a href="strategic-planning.html">Trade Mark</a></li>
 				       			<li><a href="global-risk.html">Copy Rights </a></li>
 				       			<li><a href="audit-assurance.html">Software</a></li>
-				       			{{-- <li><a href="trades-stocks.html">Trades & Stocks</a></li>
-				       			<li><a href="information-technology.html">Information Technology</a></li> --}}
-				       		</ul> <!-- End of .sub-menu -->
-				       </li>
+
+				       		</ul>
+				       </li> --}}
+                       <li class="dropdown">
+  <a href="{{ route('Home.services') }}">Services</a>
+  <ul class="sub-menu fix">
+    @forelse($servicesMenu as $svc)
+      <li><a href="{{ route('Home.services.show', $svc->slug) }}">{{ $svc->title }}</a></li>
+    @empty
+      <li><a href="javascript:void(0)">Coming soon…</a></li>
+    @endforelse
+  </ul>
+</li>
+
               <li><a href="{{ route('Home.business-sectors') }}">Business Sectors</a></li>
               <li><a href="{{ asset("/administration") }}">Administration</a></li>
               <li><a href="{{ asset("/softwares") }}">Softwares</a></li>
                            <li><a href="{{ asset("/clients") }}">Clients</a></li>
-                            <li><a href="{{ asset("/downloads") }}">Downloads</a></li>
+                            <li><a href="{{ route('Home.downloads') }}">Downloads</a></li>
                             <li><a href="{{ asset("/careers") }}">Jobs & Career</a></li>
 
 
@@ -348,6 +397,83 @@
 
 
 
+
+
+        <!-- Floating Contact: START -->
+<div class="floating-contact-wrapper" id="floatingContact">
+  <!-- Vertical Tab Button -->
+  <button class="floating-contact-button" id="openContactBtn" aria-expanded="false" aria-controls="contactFloatingForm">
+    <i class="fas fa-envelope" aria-hidden="true"></i>
+    <span class="fcb-text">Contact Us</span>
+  </button>
+
+  <!-- Backdrop / Overlay -->
+  <div class="contact-overlay" id="contactOverlay" hidden></div>
+
+  <!-- Slide-in Panel -->
+  <aside
+    class="floating-contact-form"
+    id="contactFloatingForm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="contactTitle"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <button class="close-contact-form" id="closeContactBtn" aria-label="Close contact form">×</button>
+
+    <header class="contact-head">
+      <div class="dot"></div>
+      <h3 id="contactTitle">Let’s Talk</h3>
+      <p class="contact-sub">We usually reply within a few hours.</p>
+    </header>
+
+    <form id="floatingContactForm" method="POST" action="{{ route('Home.welcome.store') }}" novalidate>
+      @csrf
+
+      <div class="form-row">
+        <div class="field">
+          <label>Name*</label>
+          <input type="text" name="name" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <input type="text" name="phone" placeholder="Optional" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label>Email*</label>
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label>Country</label>
+          <input type="text" name="country" placeholder="e.g., Pakistan"  required/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Message*</label>
+        <textarea name="message" placeholder="How can we help?" rows="3" required></textarea>
+      </div>
+
+      <!-- Honeypot (anti-bot) -->
+      {{-- <div class="hp" aria-hidden="true">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" />
+      </div> --}}
+
+      <button type="submit" id="contactSubmitBtn" class="btn-submit">
+        <span class="btn-text">Submit</span>
+        <span class="btn-spinner" aria-hidden="true"></span>
+      </button>
+
+      <p class="form-note" id="contactFormNote" role="status" aria-live="polite"></p>
+    </form>
+  </aside>
+</div>
+<!-- Floating Contact: END -->
+
   @yield("Content")
 
   {{-- newsletter --}}
@@ -410,7 +536,55 @@
           <!-- /Quick Links -->
 
           <!-- Contact -->
-          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 footer_contact">
+          @php
+  // pull single settings row
+  $contact = \App\Models\ContactSetting::first();
+
+  // be defensive: handle array or raw JSON string
+  $phones = collect(is_array($contact->phones ?? null) ? $contact->phones : json_decode($contact->phones ?? '[]', true))
+              ->filter()->values();
+
+  $emails = collect(is_array($contact->emails ?? null) ? $contact->emails : json_decode($contact->emails ?? '[]', true))
+              ->filter()->values();
+
+  // helper to make tel: safe (keep +, digits only)
+  $telHref = function(string $p){
+      return preg_replace('/[^0-9+]/', '', $p);
+  };
+@endphp
+
+<!-- Contact -->
+<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 footer_contact">
+  <div class="theme_title"><h4>Contact</h4></div>
+
+  <p>
+    <span class="ficon flaticon-map"></span>
+    {{ $contact->address ?? 'Address not set' }}
+  </p>
+
+  @if($phones->isNotEmpty())
+    <p>
+      <span class="ficon flaticon-phone"></span>
+      @foreach($phones as $ph)
+        <a href="tel:{{ $telHref($ph) }}">{{ $ph }}</a>@if(!$loop->last), @endif
+      @endforeach
+    </p>
+  @endif
+
+  @if($emails->isNotEmpty())
+    <p>
+      <span class="ficon flaticon-messagetwo"></span>
+      @foreach($emails as $em)
+        <a href="mailto:{{ $em }}">{{ $em }}</a>@if(!$loop->last), @endif
+      @endforeach
+    </p>
+  @endif
+
+
+</div>
+<!-- /Contact -->
+
+          {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 footer_contact">
             <div class="theme_title"><h4>Contact</h4></div>
             <p><span class="ficon flaticon-map"></span>
               305, Frere Business Centre, Frere Road, Adjacent Akhbar Market, Saddar, Karachi-75350 (Pakistan)
@@ -426,11 +600,11 @@
             <p><span class="ficon flaticon-messagetwo"></span>
               <a href="mailto:azizismail@cyber.net.pk">azizismail@cyber.net.pk</a>,
               <a href="mailto:info@azizismail.com">info@azizismail.com</a>
-            </p>
+            </p> --}}
             {{-- <p><span class="ficon flaticon-clock"></span>
               Mon–Sat: 07:30–19:00 &nbsp;•&nbsp; Sun: Closed
             </p> --}}
-          </div>
+          {{-- </div> --}}
           <!-- /Contact -->
 
         </div> <!-- End of .row -->
@@ -487,6 +661,7 @@
   </div>
 </div>
 
+<div id="toaster" aria-live="polite" aria-atomic="true"></div>
 
 		<!-- Js File_________________________________ -->
 
@@ -534,6 +709,43 @@
 		</div>  <!-- End of .page_wrapper -->
 
 	</body>
+    <script>
+document.addEventListener('DOMContentLoaded', function(){
+  const panel   = document.getElementById('contactFloatingForm');
+  const overlay = document.getElementById('contactOverlay');
+  const openBtn = document.getElementById('openContactBtn');
+  const closeBtn= document.getElementById('closeContactBtn');
+  if(!panel || !openBtn) return;
+
+  // start CLOSED
+  function closeForm(){
+    panel.classList.remove('show');
+    openBtn.setAttribute('aria-expanded','false');
+    if (overlay){
+      overlay.classList.remove('show');
+      setTimeout(()=>overlay.hidden = true, 180);
+    }
+  }
+  function openForm(){
+    panel.classList.add('show');
+    openBtn.setAttribute('aria-expanded','true');
+    if (overlay){
+      overlay.hidden = false;
+      overlay.classList.add('show');
+    }
+  }
+  closeForm(); // ensure closed on load
+
+  // click to toggle (mobile & desktop)
+  openBtn.addEventListener('click', e => {
+    e.preventDefault();
+    panel.classList.contains('show') ? closeForm() : openForm();
+  });
+  if (closeBtn) closeBtn.addEventListener('click', e => { e.preventDefault(); closeForm(); });
+  if (overlay)  overlay.addEventListener('click', closeForm);
+});
+</script>
+
 <script>
 (function(){
   const widget = document.getElementById('wa-widget');
@@ -693,4 +905,410 @@
   applyFilters();
 })();
 </script>
+<script>
+(() => {
+  const wrapper = document.getElementById('floatingContact');
+  const panel   = document.getElementById('contactFloatingForm');
+  const overlay = document.getElementById('contactOverlay');
+  const openBtn = document.getElementById('openContactBtn');
+  const closeBtn= document.getElementById('closeContactBtn');
+  const form    = document.getElementById('floatingContactForm');
+  const submit  = document.getElementById('contactSubmitBtn');
+  const note    = document.getElementById('contactFormNote');
+
+  let lastFocus = null;
+
+  function isOpen(){ return panel.classList.contains('show'); }
+
+  function openForm() {
+    lastFocus = document.activeElement;
+    panel.classList.add('show');
+    overlay.hidden = false;
+    overlay.classList.add('show');
+    panel.setAttribute('aria-hidden','false');
+    openBtn.setAttribute('aria-expanded','true');
+    // focus first input
+    const first = panel.querySelector('input, textarea, button');
+    first && first.focus();
+    trapFocus(true);
+  }
+
+  function closeForm() {
+    panel.classList.remove('show');
+    overlay.classList.remove('show');
+    panel.setAttribute('aria-hidden','true');
+    openBtn.setAttribute('aria-expanded','false');
+    setTimeout(() => { overlay.hidden = true; }, 180);
+    trapFocus(false);
+    lastFocus && lastFocus.focus();
+  }
+
+  function toggleForm(){ isOpen() ? closeForm() : openForm(); }
+
+  // Events
+  openBtn.addEventListener('click', toggleForm);
+  closeBtn.addEventListener('click', closeForm);
+  overlay.addEventListener('click', closeForm);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen()) closeForm();
+  });
+
+  // Focus trap
+  let focusables = [];
+  function trapFocus(enable){
+    if(!enable){ document.removeEventListener('keydown', handleTrap); return; }
+    focusables = panel.querySelectorAll('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])');
+    document.addEventListener('keydown', handleTrap);
+  }
+  function handleTrap(e){
+    if(e.key !== 'Tab' || !isOpen()) return;
+    const first = focusables[0], last = focusables[focusables.length - 1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  }
+
+  // Client-side validation (basic)
+  function validate() {
+    let ok = true;
+    form.querySelectorAll('[required]').forEach(el => {
+      if(!el.value.trim()){
+        ok = false;
+        el.classList.add('invalid');
+        el.addEventListener('input', () => el.classList.remove('invalid'), { once: true });
+      }
+    });
+    // simple email check
+    const email = form.querySelector('input[type="email"]');
+    if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
+      ok = false;
+      email.classList.add('invalid');
+    }
+    return ok;
+  }
+
+  // AJAX submit (progressive enhancement). Falls back if fetch fails.
+  form.addEventListener('submit', async (e) => {
+    if (!window.fetch || !window.FormData) return; // fallback to normal POST
+    e.preventDefault();
+
+    note.textContent = '';
+    if(!validate()){
+      note.textContent = 'Please fill required fields correctly.';
+      panel.classList.remove('shake'); // re-trigger animation
+      void panel.offsetWidth;
+      panel.classList.add('shake');
+      return;
+    }
+
+    // loading state
+    submit.disabled = true;
+    wrapper.classList.add('loading');
+
+    try {
+      const fd = new FormData(form);
+      // Laravel CSRF token from hidden _token
+      const csrf = form.querySelector('input[name="_token"]')?.value || '';
+
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-TOKEN': csrf },
+        body: fd
+      });
+
+      if(!res.ok) throw new Error('Network error');
+
+      // Attempt to parse JSON; if not JSON, still show success
+      let data = null;
+      try { data = await res.json(); } catch(_) {}
+
+      note.textContent = (data && data.message) ? data.message : 'Thank you! Your message has been sent.';
+      note.classList.add('ok');
+
+      form.reset();
+      setTimeout(closeForm, 700);
+    } catch (err) {
+      note.textContent = 'Sorry, failed to send. Please try again.';
+      note.classList.remove('ok');
+    } finally {
+      submit.disabled = false;
+      wrapper.classList.remove('loading');
+    }
+  });
+})();
+</script>
+
+{{-- contact form --}}
+{{-- <script>
+$(function(){
+  var $panel = $('#contactFloatingForm');
+  var $overlay = $('#contactOverlay');
+  var $open = $('#openContactBtn');
+  var $close = $('#closeContactBtn');
+  var $form = $('#floatingContactForm');
+  var $note = $('#contactFormNote');
+  var $btn = $('#contactSubmitBtn');
+
+  function openPanel(){
+    $panel.addClass('show').attr('aria-hidden','false');
+    $overlay.prop('hidden', false).addClass('show');
+    $open.attr('aria-expanded','true');
+    $panel.find('input,textarea,button').first().focus();
+  }
+  function closePanel(){
+    $panel.removeClass('show').attr('aria-hidden','true');
+    $overlay.removeClass('show');
+    setTimeout(function(){ $overlay.prop('hidden', true); }, 180);
+    $open.attr('aria-expanded','false');
+  }
+
+  $open.on('click', openPanel);
+  $close.on('click', closePanel);
+  $overlay.on('click', closePanel);
+  $(document).on('keydown', function(e){ if(e.key === 'Escape') closePanel(); });
+
+  function setLoading(on){
+    $btn.prop('disabled', on);
+    $btn.find('.btn-spinner').toggle(on);
+    $btn.find('.btn-text').css('opacity', on ? .5 : 1);
+  }
+
+  $form.on('submit', function(e){
+    e.preventDefault();
+    $note.text('').removeClass('ok');
+
+    var formData = new FormData(this); // @csrf included automatically
+    setLoading(true);
+
+    $.ajax({
+      url: $form.attr('action'),
+      method: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(res){
+        var msg = (res && res.message) ? res.message : 'Thank you for message submitting.';
+        $note.text(msg).css('color', '#198754').addClass('ok');
+        $form[0].reset();
+        setTimeout(closePanel, 900);
+      },
+      error: function(xhr){
+        if (xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors) {
+          var errors = xhr.responseJSON.errors;
+          // show first error line
+          var first = Object.values(errors)[0][0] || 'Please check the form.';
+          $note.text(first).css('color', '#b10937');
+        } else {
+          $note.text('Sorry, failed to send. Please try again.').css('color', '#b10937');
+        }
+      },
+      complete: function(){
+        setLoading(false);
+      }
+    });
+  });
+});
+</script> --}}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const panel   = document.getElementById('contactFloatingForm');
+  const overlay = document.getElementById('contactOverlay');
+  const openBtn = document.getElementById('openContactBtn');
+  const closeBtn= document.getElementById('closeContactBtn');
+
+  if (!panel || !overlay || !openBtn) return;
+
+  function openForm(){
+    panel.classList.add('show');
+    overlay.hidden = false;
+    overlay.classList.add('show');
+    panel.setAttribute('aria-hidden','false');
+    openBtn.setAttribute('aria-expanded','true');
+    (panel.querySelector('input,textarea,button')||{}).focus?.();
+  }
+  function closeForm(){
+    panel.classList.remove('show');
+    overlay.classList.remove('show');
+    panel.setAttribute('aria-hidden','true');
+    openBtn.setAttribute('aria-expanded','false');
+    setTimeout(()=>{ overlay.hidden = true; },180);
+  }
+
+  // one place event delegation (no duplicate listeners)
+  document.addEventListener('click', function(e){
+    if (e.target.closest('#openContactBtn'))  { e.preventDefault(); openForm(); }
+    if (e.target.closest('#closeContactBtn') || e.target.closest('#contactOverlay')) {
+      e.preventDefault(); closeForm();
+    }
+  });
+
+  // keep on top
+  openBtn.style.zIndex = '10002';
+  panel.style.zIndex   = '10001';
+  overlay.style.zIndex = '10000';
+});
+</script>
+
+<script>
+(() => {
+  const wrapper = document.getElementById('floatingContact');
+  const panel   = document.getElementById('contactFloatingForm');
+  const overlay = document.getElementById('contactOverlay');
+  const openBtn = document.getElementById('openContactBtn');
+  const closeBtn= document.getElementById('closeContactBtn');
+  const form    = document.getElementById('floatingContactForm');
+  const submit  = document.getElementById('contactSubmitBtn');
+  const note    = document.getElementById('contactFormNote');
+
+  let lastFocus = null;
+
+  function isOpen(){ return panel.classList.contains('show'); }
+  function openForm(){ lastFocus=document.activeElement; panel.classList.add('show'); overlay.hidden=false; overlay.classList.add('show'); panel.setAttribute('aria-hidden','false'); openBtn.setAttribute('aria-expanded','true'); (panel.querySelector('input, textarea, button')||{}).focus?.(); }
+  function closeForm(){ panel.classList.remove('show'); overlay.classList.remove('show'); panel.setAttribute('aria-hidden','true'); openBtn.setAttribute('aria-expanded','false'); setTimeout(()=>{overlay.hidden=true;},180); lastFocus&&lastFocus.focus(); }
+
+  openBtn.addEventListener('click', ()=> isOpen()? closeForm(): openForm());
+  closeBtn.addEventListener('click', closeForm);
+  overlay.addEventListener('click', closeForm);
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape'&&isOpen()) closeForm(); });
+
+  // ---------- Inline errors helpers ----------
+  function clearErrors() {
+    form.querySelectorAll('.error-msg').forEach(e=>e.remove());
+    form.querySelectorAll('.invalid').forEach(el=>{
+      el.classList.remove('invalid');
+      el.removeAttribute('aria-invalid');
+    });
+  }
+  function placeError(field, message) {
+    const el = form.querySelector(`[name="${field}"]`);
+    if(!el) return;
+    el.classList.add('invalid');
+    el.setAttribute('aria-invalid','true');
+
+    // if next sibling already error-msg, reuse. else create.
+    let hint = el.nextElementSibling;
+    if(!hint || !hint.classList.contains('error-msg')) {
+      hint = document.createElement('small');
+      hint.className = 'error-msg';
+      el.parentNode.insertBefore(hint, el.nextSibling);
+    }
+    hint.textContent = message;
+  }
+  // remove error of a field while typing
+  form.addEventListener('input', (e)=>{
+    const el = e.target;
+    if(el.matches('input, textarea')) {
+      el.classList.remove('invalid');
+      el.removeAttribute('aria-invalid');
+      const nxt = el.nextElementSibling;
+      if(nxt && nxt.classList.contains('error-msg')) nxt.remove();
+    }
+  });
+
+  // ---------- Client validation (optional quick check) ----------
+//   function basicValidate(){
+//     let ok = true;
+//     clearErrors();
+//     const req = ['name','email','message'];
+//     req.forEach(n=>{
+//       const el = form.querySelector(`[name="${n}"]`);
+//       if(el && !el.value.trim()){
+//         ok=false; placeError(n, 'This field is required.');
+//       }
+//     });
+//     const email = form.querySelector('[name="email"]');
+//     if(email && email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
+//       ok=false; placeError('email','Please enter a valid email.');
+//     }
+//     return ok;
+//   }
+function basicValidate(){
+  let ok = true;
+  clearErrors();
+
+  // ✅ ab phone bhi required
+  ['name','email','country','message','phone'].forEach(n=>{
+    const el = form.querySelector(`[name="${n}"]`);
+    if(el && !el.value.trim()){
+      ok = false; placeError(n, 'This field is required.');
+    }
+  });
+
+  // email format
+  const email = form.querySelector('[name="email"]');
+  if(email && email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
+    ok = false; placeError('email','Please enter a valid email.');
+  }
+
+  // phone format (jab value ho)
+  const phone = form.querySelector('[name="phone"]');
+  if (phone && phone.value.trim() && !/^[0-9+\-\s()]{7,20}$/.test(phone.value.trim())) {
+    ok = false; placeError('phone','Please enter a valid phone number.');
+  }
+
+  return ok;
+}
+
+  // ---------- AJAX submit (Fetch) ----------
+  form.addEventListener('submit', async (e) => {
+    if (!window.fetch || !window.FormData) return; // allow normal POST in very old browsers
+    e.preventDefault();
+
+    note.textContent = '';
+    note.classList.remove('ok');
+    clearErrors();
+
+    if(!basicValidate()){
+      panel.classList.remove('shake'); void panel.offsetWidth; panel.classList.add('shake');
+      return;
+    }
+
+    submit.disabled = true;
+    wrapper.classList.add('loading');
+
+    try {
+      const fd = new FormData(form);
+      const csrf = form.querySelector('input[name="_token"]')?.value || '';
+
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'X-Requested-With':'XMLHttpRequest', 'X-CSRF-TOKEN': csrf },
+        body: fd
+      });
+
+      if (res.status === 422) {
+        const data = await res.json();
+        if (data && data.errors) {
+          Object.entries(data.errors).forEach(([field, msgs])=>{
+            placeError(field, Array.isArray(msgs)? msgs[0] : String(msgs));
+          });
+          note.textContent = 'Please correct the highlighted fields.';
+          return;
+        }
+      }
+
+      if(!res.ok) throw new Error('Network error');
+
+      // success
+      let data=null; try{ data=await res.json(); }catch(_){}
+      note.textContent = (data && data.message) ? data.message : 'Thank you! Your message has been sent.';
+      note.classList.add('ok');
+      form.reset();
+      setTimeout(closeForm, 700);
+    } catch (err) {
+      note.textContent = 'Sorry, failed to send. Please try again.';
+    } finally {
+      submit.disabled = false;
+      wrapper.classList.remove('loading');
+    }
+  });
+
+
+
+})();
+
+
+</script>
+
+
 </html>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\InnerBanner;
 use Illuminate\Http\Request;
 
 class BusinessSectorController extends Controller
@@ -9,7 +9,10 @@ class BusinessSectorController extends Controller
     //
     public function index()
     {
-        // View file: resources/views/Home/business-sectors.blade.php
-        return view('Home.business-sectors');
+        // id=1 se banner lo; na mile to default image use karo
+        $banner = InnerBanner::find(1);
+        $bannerImage = $banner?->image ?? 'assets/images/home/business.jpg';
+
+        return view('Home.business-sectors', compact('bannerImage'));
     }
 }

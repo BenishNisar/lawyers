@@ -193,7 +193,9 @@
         				</div> <!-- End of .single_service_wrapper -->
         			</div> <!-- End of .col -->
 
-        			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><hr></div>
+        			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><hr>
+
+                    </div>
 
 
 
@@ -210,8 +212,10 @@
 				<p class="float_left">ConsultPress over 20 years of experience we’ll ensure you always get the best guidance.</p>
 				<a href="#" class="theme_button p_color_bg s_color float_right tran3s">Request Quote</a>
 			</div> <!-- End of .container -->
-		</div> <!-- End of .re
+		</div> <!-- End of .fter_quote_footer -->
 
 
 
 @endsection
+
+

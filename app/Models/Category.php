@@ -11,4 +11,9 @@ class Category extends Model
     protected $table="category";
     protected $fillable = ['name'];
 
+     public function downloads()
+    {
+        return $this->belongsToMany(Download::class, 'category_download', 'category_id', 'download_id');
+    }
+
 }

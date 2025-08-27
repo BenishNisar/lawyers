@@ -7,14 +7,16 @@
 
 
         <!-- Inner Banner _____________________ -->
-        <div class="inner_banner">
-        	<div class="overlay">
-        		<div class="banner_tilte">
-        			<h2>Careers</h2>
-        			<span class="s_color_bg"></span>
-        		</div> <!-- End of .banner_title -->
-        	</div> <!-- End of .overlay -->
-        </div> <!-- End of .inner_banner -->
+<div class="inner_banner"
+     style="background: url('{{ asset($bannerImage) }}') no-repeat center; background-size: cover;">
+  <div class="overlay">
+    <div class="banner_tilte">
+      <h2>Careers</h2>
+      <span class="s_color_bg"></span>
+    </div>
+  </div>
+</div>
+
 
 
         <!-- Page Breadcrumb __________________ -->
@@ -221,13 +223,13 @@
         				<div class="wrapper">
         					<!-- Page List -->
         					<ul class="page_list">
-        						<li><a href="about.html" class="tran3s">About Company</a></li>
-        						<li><a href="company-history.html" class="tran3s">Company History</a></li>
-        						<li><a href="our-team.html" class="tran3s">Our Team</a></li>
-        						<li><a href="our-partners.html" class="tran3s">Our Partners</a></li>
-        						<li><a href="faq.html" class="tran3s">FAQ</a></li>
-        						<li><a href="#" class="tran3s active">Careers</a></li>
-        						<li><a href="client-feedback.html" class="tran3s">Client Feedback</a></li>
+        						<li><a href="{{ asset("/business-sectors") }}" class="tran3s">Business Sectors</a></li>
+        						<li><a href="{{ asset("/administration") }}" class="tran3s">Administration</a></li>
+        						<li><a href="{{ asset("/softwares") }}" class="tran3s">Softwares</a></li>
+        						<li><a href="{{ asset("/clients") }}" class="tran3s">Clients</a></li>
+        						<li><a href="{{ asset("/downloads") }}" class="tran3s">Downloads</a></li>
+        						<li><a href="{{ asset("/careers") }}" class="tran3s active">Jons & Careers</a></li>
+        						<li><a href="{{ asset("/blogs") }}" class="tran3s">Blogs</a></li>
         					</ul> <!-- End of .page_list -->
 
 							<!-- Fun Facts -->

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Mail;
-
+use App\Models\Contact;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -18,18 +18,19 @@ class UserThankYouMail extends Mailable
      *
      * @return void
      */
-    public $name;
+    public Contact $contact;
 
-    public function __construct($name)
+    public function __construct(Contact $contact)
     {
-        $this->name = $name;
+        $this->contact = $contact;
     }
 
 
-    public function build()
+   public function build()
     {
-        return $this->subject('Thank You for Contacting Qadeer & Zaheer')
-                    ->view('emails.user_thankyou'); // 👈 ye view bnaoge next step me
+        return $this->subject('Thank you for contacting Aziz Ismail & Co')
+                    ->from(config('mail.from.address'), config('mail.from.name'))
+                    ->view('emails.user_thanks'); // Blade view below
     }
 
     /**

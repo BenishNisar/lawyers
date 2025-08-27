@@ -2,7 +2,7 @@
 @section("Content")
  <!-- Banner ___________________________________ -->
 
-		<section class="banner">
+		{{-- <section class="banner">
 			<div class="rev_slider_wrapper">
 				<div id="main_slider" class="rev_slider"  data-version="5.0">
 					<ul>
@@ -47,7 +47,7 @@
 								data-start="4000"
 								data-splitin="none"
 								data-splitout="none">
-								<a href="contact.html" class="contact_us_button tran3s s_color_bg theme_button">Contact us</a>
+								<a href="{{ asset("/contact") }}" class="contact_us_button tran3s s_color_bg theme_button">Contact us</a>
 							</div>
 							<div class="tp-caption"
 								data-x="['left','left','left','left']" data-hoffset="['180','180','210','40']"
@@ -60,7 +60,7 @@
 								data-start="4000"
 								data-splitin="none"
 								data-splitout="none">
-								<a href="service.html" class="service_button tran3s p_color_bg theme_button">Our Services</a>
+								<a href="{{ asset("/services") }}" class="service_button tran3s p_color_bg theme_button">Our Services</a>
 							</div>
 						</li> <!-- /Slide_show -->
 
@@ -178,8 +178,110 @@
 					</ul>
 				</div> <!-- /main_slider -->
 			</div> <!-- /rev_slider_wrapper -->
-		</section> <!-- /banner -->
+		</section> --}}
 
+@php
+    $b1 = $slides[1] ?? null;
+    $b2 = $slides[2] ?? null;
+    $b3 = $slides[3] ?? null;
+@endphp
+
+<section class="banner">
+  <div class="rev_slider_wrapper">
+    <div id="main_slider" class="rev_slider" data-version="5.0">
+      <ul>
+
+        {{-- Slide 1 => ID 1 --}}
+        @if($b1)
+        <li data-index='rs-355' class="slide_show slide_1" data-transition='boxslide' data-slotamount='default' data-easein='default' data-easeout='default' data-masterspeed='default' data-rotate='0' data-saveperformance='off' data-title='Slide Boxes' data-description=''>
+          <img src="{{ asset($b1->image_path) }}" alt=""
+               data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+
+          <div class="main_heading tp-caption tp-resizeme"
+               data-x="['left','left','left','left']" data-hoffset="['0','0','30','40']"
+               data-y="['middle','middle','middle','middle']" data-voffset="['-169','-169','-139','-80']"
+               data-whitespace="nowrap" data-transform_idle="o:1;"
+               data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;s:2000;e:Power3.easeInOut;"
+               data-transform_out="y:[100%];s:1000;s:1000;" data-start="2000">
+            <h1>{!! strip_tags($b1->title, '<br><b><strong><i><em>') !!}</h1>
+          </div>
+
+          <div class="tp-caption tp-resizeme"
+               data-x="['left','left','left','left']" data-hoffset="['0','0','30','40']"
+               data-y="['middle','middle','middle','middle']" data-voffset="['-16','-16','-06','20']"
+               data-transform_idle="o:1;" data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.8;sY:0.8;opacity:0;s:1500;e:Power4.easeOut;"
+               data-transform_out="y:[100%];s:1000;s:1000;" data-start="3000">
+            <p class="p_color">{!! nl2br(e($b1->paragraph)) !!}</p>
+          </div>
+
+          {{-- buttons unchanged --}}
+          <div class="tp-caption" data-x="['left','left','left','left']" data-hoffset="['0','0','30','40']"
+               data-y="['middle','middle','middle','middle']" data-voffset="['87','87','97','107']" data-start="4000">
+            <a href="{{ asset('/contact') }}" class="contact_us_button tran3s s_color_bg theme_button">Contact us</a>
+          </div>
+          <div class="tp-caption" data-x="['left','left','left','left']" data-hoffset="['180','180','210','40']"
+               data-y="['middle','middle','middle','middle']" data-voffset="['87','87','97','200']" data-start="4000">
+            <a href="{{ asset('/services') }}" class="service_button tran3s p_color_bg theme_button">Our Services</a>
+          </div>
+        </li>
+        @endif
+
+        {{-- Slide 2 => ID 2 --}}
+        @if($b2)
+        <li data-index='rs-356' class="slide_show slide_2" data-transition='slotslide-vertical' data-slotamount='default' data-easein='default' data-easeout='default' data-masterspeed='default' data-rotate='0' data-saveperformance='off' data-title='Slide 2' data-description=''>
+          <img src="{{ asset($b2->image_path) }}" alt=""
+               data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+
+          <div class="tp-caption tp-resizeme" data-x="['center','center','center','center']" data-hoffset="['268','268','100','0']"
+               data-y="['middle','middle','middle','middle']" data-voffset="['-169','-169','-129','-50']" data-start="2000">
+            <h1>{!! strip_tags($b2->title, '<br><b><strong><i><em>') !!}</h1>
+          </div>
+
+          <div class="main_heading tp-caption tp-resizeme" data-x="['center','center','center','center']" data-hoffset="['265','265','97','28']"
+               data-y="['middle','middle','middle','middle']" data-voffset="['-16','-16','24','48']" data-start="3000">
+            <p class="p_color">{!! nl2br(e($b2->paragraph)) !!}</p>
+          </div>
+
+          {{-- buttons unchanged --}}
+          <div class="tp-caption" data-start="4000">
+            <a href="{{ asset('/contact') }}" class="contact_us_button tran3s s_color_bg theme_button">Contact us</a>
+          </div>
+          <div class="tp-caption" data-start="4000">
+            <a href="{{ asset('/services') }}" class="service_button tran3s p_color_bg theme_button">Our Services</a>
+          </div>
+        </li>
+        @endif
+
+        {{-- Slide 3 => ID 3 --}}
+        @if($b3)
+        <li class="slide_show slide_3" data-index='rs-381' data-transition='3dcurtain-vertical' data-slotamount='default' data-easein='default' data-easeout='default' data-masterspeed='default' data-rotate='0' data-saveperformance='off' data-title='Slide 3' data-description=''>
+          <img src="{{ asset($b3->image_path) }}" alt=""
+               data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+
+          <div class="tp-caption tp-resizeme" data-x="['left','left','left','left']" data-hoffset="['0','0','30','40']"
+               data-y="['middle','middle','middle','middle']" data-voffset="['-169','-169','-139','-80']" data-start="2000">
+            <h1>{!! strip_tags($b3->title, '<br><b><strong><i><em>') !!}</h1>
+          </div>
+
+          <div class="tp-caption tp-resizeme" data-x="['left','left','left','left']" data-hoffset="['0','0','30','40']"
+               data-y="['middle','middle','middle','middle']" data-voffset="['-16','-16','-06','20']" data-start="3000">
+            <p class="p_color">{!! nl2br(e($b3->paragraph)) !!}</p>
+          </div>
+
+          {{-- buttons unchanged --}}
+          <div class="tp-caption" data-start="4000">
+            <a href="{{ asset('/contact') }}" class="contact_us_button tran3s s_color_bg theme_button">Contact us</a>
+          </div>
+          <div class="tp-caption" data-start="4000">
+            <a href="{{ asset('/services') }}" class="service_button tran3s p_color_bg theme_button">Our Services</a>
+          </div>
+        </li>
+        @endif
+
+      </ul>
+    </div>
+  </div>
+</section>
 
 
 

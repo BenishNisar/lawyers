@@ -5,6 +5,7 @@ use App\Http\Controllers\AccountLoginController;
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\AdministrationController;
 use App\Http\Controllers\BackendBlogController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\CategoryController;
 
@@ -13,12 +14,16 @@ use App\Http\Controllers\BusinessSectorController;
 use App\Http\Controllers\CareersController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactSettingController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\DownloadsController;
+use App\Http\Controllers\InnerBannerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SafeMarkController;
+use App\Http\Controllers\ServiceAdminController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SoftwareController;
 use App\Http\Controllers\TeamController;
@@ -27,6 +32,7 @@ use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use App\Models\Blog;
+use App\Models\Service;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 /*
@@ -44,8 +50,9 @@ Route::get("/",[WelcomeController::class,"index"])->name("Home.welcome");
 Route::post("/",[WelcomeController::class,"store"])->name("Home.welcome.store");
 Route::get("/contact",[ContactController::class,"index"])->name("Home.contact");
 // contactstore
-Route::post("/contact",[ContactController::class,"store"])->name("Home.contact.store");
-
+// Route::post("/contact",[ContactController::class,"store"])->name("Home.contact.store");
+Route::post('/contact/submit', [ContactController::class,'store'])
+    ->name('Home.welcome.store');
 
 Route::get("/blogs",[BlogsController::class,"index"])->name("Home.blogs");
 Route::get('/blogs_details/{slug}', [BlogsDetailsController::class, 'show'])->name('Home.blogs_details');
@@ -53,6 +60,8 @@ Route::get('/blogs_details/{slug}', [BlogsDetailsController::class, 'show'])->na
 Route::get('/frontend-blog-search', [BlogsController::class, 'search'])->name('frontend.blog.search');
 // Route::get("/blogs_details/{id}",[BlogsDetailsController::class,"show"])->name("Home.blogs_details");
 Route::get("/services",[ServicesController::class,"index"])->name("Home.services");
+Route::get('/services/{service:slug}', [ServicesController::class, 'show'])->name('Home.services.show');
+
 Route::get("/about",[AboutController::class,"index"])->name("Home.about");
 Route::get('/business-sectors', [BusinessSectorController::class, 'index'])
      ->name('Home.business-sectors');
@@ -60,8 +69,14 @@ Route::get('/business-sectors', [BusinessSectorController::class, 'index'])
      ->name('Home.administration');
         Route::get('/softwares', [SoftwareController::class, 'index'])
      ->name('Home.softwares');
-             Route::get('/downloads', [DownloadsController::class, 'index'])
-     ->name('Home.downloads');
+//             Route::get('/downloads', [DownloadsController::class, 'index'])
+//   ->name('Home.downloads');
+
+Route::get('/download-center', [DownloadsController::class, 'index'])
+    ->name('Home.downloads');
+Route::get('/downloads/preview/{download}', [\App\Http\Controllers\DownloadsController::class,'preview'])
+     ->name('Home.downloads.preview');
+
        Route::get('/careers', [CareersController::class, 'index'])
      ->name('Home.careers');
           Route::get('/clients', [ClientController::class, 'index'])
@@ -154,6 +169,49 @@ Route::middleware(['auth'])->group(function () {
     // Account Settings
     Route::get('/account_settings', [AccountSettingsController::class, 'index'])->name('Dashboard.admin.account_settings.index');
     Route::put('/account_settings/{id?}', [AccountSettingsController::class, 'update'])->name('Dashboard.admin.account_settings.update');
+
+    // Banners
+Route::get("/banner",                [BannerController::class, "index"])->name("Dashboard.admin.banner.index");
+Route::get("/banner/add",            [BannerController::class, "add"])->name("Dashboard.admin.banner.add");
+Route::post("/banner/store",         [BannerController::class, "store"])->name("Dashboard.admin.banner.store");
+Route::get("/banner/edit/{banner}",  [BannerController::class, "edit"])->name("Dashboard.admin.banner.edit");     // {banner} = implicit model binding
+Route::put("/banner/update/{banner}",[BannerController::class, "update"])->name("Dashboard.admin.banner.update");
+Route::delete("/banner/delete/{banner}", [BannerController::class, "destroy"])->name("Dashboard.admin.banner.destroy");
+// optional search: ?q= in index already handled
+
+// Downloads (Admin)
+Route::get('/downloads-mgmt',                 [DownloadController::class, 'index'])->name('Dashboard.admin.downloads-mgmt.index');
+Route::get('/downloads-mgmt/add',             [DownloadController::class, 'add'])->name('Dashboard.admin.downloads-mgmt.add');
+Route::post('/downloads-mgmt/store',          [DownloadController::class, 'store'])->name('Dashboard.admin.downloads-mgmt.store');
+Route::get('/downloads-mgmt/edit/{download}', [DownloadController::class, 'edit'])->name('Dashboard.admin.downloads-mgmt.edit');
+Route::put('/downloads-mgmt/update/{download}',[DownloadController::class, 'update'])->name('Dashboard.admin.downloads-mgmt.update');
+Route::delete('/downloads-mgmt/delete/{download}',[DownloadController::class, 'destroy'])->name('Dashboard.admin.downloads-mgmt.delete');
+
+
+Route::get('/services-mgmt',                 [ServiceAdminController::class, 'index'])->name('Dashboard.admin.services-mgmt.index');
+Route::get('/services-mgmt/add',             [ServiceAdminController::class, 'add'])->name('Dashboard.admin.services-mgmt.add');
+Route::post('/services-mgmt/store',          [ServiceAdminController::class, 'store'])->name('Dashboard.admin.services-mgmt.store');
+Route::get('/services-mgmt/edit/{service}',    [ServiceAdminController::class, 'edit'])->name('Dashboard.admin.services-mgmt.edit');   // <-- {service}
+Route::put('/services-mgmt/update/{service}',  [ServiceAdminController::class, 'update'])->name('Dashboard.admin.services-mgmt.update'); // <-- {service}
+Route::delete('/services-mgmt/delete/{service}',[ServiceAdminController::class,'destroy'])->name('Dashboard.admin.services-mgmt.delete');
+
+
+
+Route::get('/inner_banner',                    [InnerBannerController::class, 'index'])->name('Dashboard.admin.inner_banner.index');
+Route::get('/inner_banner/add',                [InnerBannerController::class, 'add'])->name('Dashboard.admin.inner_banner.add');
+Route::post('/inner_banner/store',             [InnerBannerController::class, 'store'])->name('Dashboard.admin.inner_banner.store');
+Route::get('/inner_banner/edit/{inner}',       [InnerBannerController::class, 'edit'])->name('Dashboard.admin.inner_banner.edit');
+Route::put('/inner_banner/update/{inner}',     [InnerBannerController::class, 'update'])->name('Dashboard.admin.inner_banner.update');
+Route::delete('/inner_banner/destroy/{inner}', [InnerBannerController::class, 'destroy'])->name('Dashboard.admin.inner_banner.destroy');
+
+// contact settings
+Route::get('/contact-settings',                    [ContactSettingController::class, 'index'])->name('Dashboard.admin.contact-settings.index');
+Route::get('/contact-settings/add',                [ContactSettingController::class, 'add'])->name('Dashboard.admin.contact-settings.add');
+Route::post('/contact-settings/store',             [ContactSettingController::class, 'store'])->name('Dashboard.admin.contact-settings.store');
+Route::get('/contact-settings/edit/{contact_setting}',       [ContactSettingController::class, 'edit'])->name('Dashboard.admin.contact-settings.edit');
+Route::put('/contact-settings/update/{contact_setting}',     [ContactSettingController::class, 'update'])->name('Dashboard.admin.contact-settings.update');
+Route::delete('/contact-settings/destroy/{contact_setting}', [ContactSettingController::class, 'destroy'])->name('Dashboard.admin.contact-settings.destroy');
+
 
 
 

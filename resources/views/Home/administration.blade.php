@@ -3,14 +3,15 @@
 
 
         <!-- Inner Banner _____________________ -->
-        <div class="inner_banner">
-        	<div class="overlay">
-        		<div class="banner_tilte">
-        			<h2>Exit & Succession Planning</h2>
-        			<span class="s_color_bg"></span>
-        		</div> <!-- End of .banner_title -->
-        	</div> <!-- End of .overlay -->
-        </div> <!-- End of .inner_banner -->
+<div class="inner_banner"
+     style="background: url('{{ asset($bannerImage) }}') no-repeat center; background-size: cover;">
+  <div class="overlay">
+    <div class="banner_tilte">
+      <h2>Exit & Succession Planning</h2>
+      <span class="s_color_bg"></span>
+    </div>
+  </div>
+</div>
 
 
         <!-- Page Breadcrumb _____________________ -->
@@ -278,14 +279,13 @@ B.Com, L.L.B</div>
         				<div class="wrapper">
         					<!-- Page List -->
         					<ul class="page_list service_page_list">
-        						<li><a href="restructuring-turnaround.html" class="tran3s">Restructuring & Turnaround</a></li>
-        						<li><a href="business-planning.html" class="tran3s">Business Plannning</a></li>
-        						<li><a href="exit-succession.html" class="tran3s active">Exit & Succession Planning</a></li>
-        						<li><a href="strategic-planning.html" class="tran3s">Strategic Planning</a></li>
-        						<li><a href="global-risk.html" class="tran3s">Global Risk & Investigations </a></li>
-        						<li><a href="audit-assurance.html" class="tran3s">Audit & Assurance</a></li>
-        						<li><a href="trades-stocks.html" class="tran3s">Trades & Stocks</a></li>
-        						<li><a href="information-technology.html" class="tran3s">Information Technology</a></li>
+        					<li><a href="{{ asset("/business-sectors") }}" class="tran3s">Business Sectors</a></li>
+        						<li><a href="{{ asset("/administration") }}" class="tran3s">Administration</a></li>
+        						<li><a href="{{ asset("/softwares") }}" class="tran3s">Softwares</a></li>
+        						<li><a href="{{ asset("/clients") }}" class="tran3s">Clients</a></li>
+        						<li><a href="{{ asset("/downloads") }}" class="tran3s">Downloads</a></li>
+        						<li><a href="{{ asset("/careers") }}" class="tran3s active">Jons & Careers</a></li>
+        						<li><a href="{{ asset("/blogs") }}" class="tran3s">Blogs</a></li>
         					</ul> <!-- End of .page_list -->
 
         					<!-- Our Brochures -->
