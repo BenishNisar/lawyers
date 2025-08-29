@@ -20,6 +20,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\DownloadsController;
 use App\Http\Controllers\InnerBannerController;
+use App\Http\Controllers\NeedHelpController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SafeMarkController;
@@ -81,6 +82,7 @@ Route::get('/downloads/preview/{download}', [\App\Http\Controllers\DownloadsCont
      ->name('Home.careers');
           Route::get('/clients', [ClientController::class, 'index'])
      ->name('Home.clients');
+    Route::get("/need_help", [NeedHelpController::class, "index"])->name("Dashboard.admin.need_help.index");
 
 // frontend pages
 // backend pages

@@ -2,7 +2,13 @@
 @section('Content')
 
 <!-- Inner Banner -->
-<div class="inner_banner">
+<!-- Inner Banner -->
+<div class="inner_banner"
+     style="
+        background-image:url('{{ asset($service->image) }}');
+        background-position:center;
+        background-size:cover;
+        background-repeat:no-repeat;">
   <div class="overlay">
     <div class="banner_tilte">
       <h2>{{ $service->title }}</h2>
@@ -10,6 +16,7 @@
     </div>
   </div>
 </div>
+
 
 <!-- Breadcrumb -->
 <div class="page-breadcrumb p_color_bg">
@@ -86,7 +93,7 @@
           </ul>
 
           <!-- Page List (your existing links) -->
-          <ul class="page_list service_page_list mt-10">
+          {{-- <ul class="page_list service_page_list mt-10">
             <li><a href="{{ asset('/business-sectors') }}" class="tran3s">Business Sectors</a></li>
             <li><a href="{{ asset('/administration') }}" class="tran3s">Administration</a></li>
             <li><a href="{{ asset('/softwares') }}" class="tran3s">Softwares</a></li>
@@ -94,7 +101,7 @@
             <li><a href="{{ asset('/downloads') }}" class="tran3s">Downloads</a></li>
             <li><a href="{{ asset('/careers') }}" class="tran3s">Jobs & Careers</a></li>
             <li><a href="{{ asset('/blogs') }}" class="tran3s">Blogs</a></li>
-          </ul>
+          </ul> --}}
 
           <!-- Brochures -->
           <div class="our_brochures">

@@ -45,7 +45,7 @@
         <div class="wrapper">
 
           <div class="main_img_holder">
-            <img src="{{ asset('assets/images/home/awarbanner.jpg') }}" alt="Clients" class="img-responsive">
+            <img src="{{ asset('assets/images/home/clientss.png') }}" alt="Clients" class="img-responsive">
             <h4 class="p_color_bg s_color">Our Clients</h4>
           </div>
 
@@ -294,16 +294,16 @@
 
     <!-- _________________________ SIDE BAR ___________________ -->
         			<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 pull-left side_bar">
+
         				<div class="wrapper">
         					<!-- Page List -->
         					<ul class="page_list service_page_list">
-
         					<li><a href="{{ asset("/business-sectors") }}" class="tran3s">Business Sectors</a></li>
         						<li><a href="{{ asset("/administration") }}" class="tran3s">Administration</a></li>
         						<li><a href="{{ asset("/softwares") }}" class="tran3s">Softwares</a></li>
         						<li><a href="{{ asset("/clients") }}" class="tran3s">Clients</a></li>
         						<li><a href="{{ asset("/downloads") }}" class="tran3s">Downloads</a></li>
-        						<li><a href="{{ asset("/careers") }}" class="tran3s active">Jons & Careers</a></li>
+        						<li><a href="{{ asset("/careers") }}" class="tran3s active">Jobs & Careers</a></li>
         						<li><a href="{{ asset("/blogs") }}" class="tran3s">Blogs</a></li>
         					</ul> <!-- End of .page_list -->
 
@@ -312,8 +312,8 @@
         						<div class="theme_title">
 									<h5>Our Brochures</h5>
 								</div>
-								<a href="#" class="tran3s s_color_bg"><span class="p_color_bg tran3s"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span>Download .PDF</a>
-								<a href="#" class="tran3s s_color_bg"><span class="p_color_bg tran3s"><i class="fa fa-file-word-o" aria-hidden="true"></i></span>Download .DOC</a>
+								<a href="{{ url("/download-center") }}" class="tran3s s_color_bg"><span class="p_color_bg tran3s"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span>Download .PDF</a>
+								<a href="{{ url("/download-center") }}" class="tran3s s_color_bg"><span class="p_color_bg tran3s"><i class="fa fa-file-word-o" aria-hidden="true"></i></span>Download .DOC</a>
         					</div> <!-- End of .our_brochures -->
 
         					<div class="sidebar_testimonial testimonial sidebar_testimonial_style_two">
@@ -328,7 +328,7 @@
 												<i>They have got my project on time with the competition with a highly skilled, well-organized and experienced</i>
 											</div> <!-- End of .text -->
 											<div class="author clear_fix">
-												<img src="images/home/1.jpg" alt="Client Image" class="float_left border_round">
+												<img src="{{asset('assets/images/home/testimonialone.jpg')}}" alt="Client Image" class="float_left border_round">
 												<div class="author_name float_left">
 													<h6 class="p_color">Mark Vilton <span>- Villo Ceo</span></h6>
 													<ul>
@@ -349,7 +349,7 @@
 												<i>ConsultPress over 20 years of experience we’ll ensure you always get the best guidance. We serve clients at every</i>
 											</div> <!-- End of .text -->
 											<div class="author clear_fix">
-												<img src="images/home/2.jpg" alt="Client Image" class="float_left border_round">
+												<img src="{{asset('assets/images/home/test2.jpg')}}" alt="Client Image" class="float_left border_round">
 												<div class="author_name float_left">
 													<h6 class="p_color">Joseph<span>- Villo Ceo</span></h6>
 													<ul>
@@ -370,7 +370,7 @@
 												<i>They have got my project on time with the competition with a highly skilled, well-organized and experienced team</i>
 											</div> <!-- End of .text -->
 											<div class="author clear_fix">
-												<img src="images/home/3.jpg" alt="Client Image" class="float_left border_round">
+												<img src="{{asset('assets/images/home/test3.jpg')}}" alt="Client Image" class="float_left border_round">
 												<div class="author_name float_left">
 													<h6 class="p_color">Anderson<span>- Villo Ceo</span></h6>
 													<ul>
@@ -390,14 +390,34 @@
 
 
         					<!-- Business Enquiry -->
-        					<div class="business_enquiry">
+        					{{-- <div class="business_enquiry">
         						<h6>For Business Enquiry</h6>
         						<p>You can also send us an <a href="#" class="s_color">email</a> and we’ll get in touch shortly, or Troll Free Number <a href="#" class="p_color"> -(+91) <br> 00-700-6202.</a></p>
         						<span class="ficon flaticon-message"></span>
-        					</div> <!-- End of .business_enquiry -->
+        					</div> --}}
+                                                   <div class="business_enquiry">
+  <h6>For Business Enquiry</h6>
+  <p>
+    You can also send us an
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=info@azizismail.com&su=Business%20Enquiry%20from%20Website"
+      target="_blank"
+      rel="noopener"
+      class="s_color"
+    >email</a>
+    and we’ll get in touch shortly, or call
+    <a href="tel:+92212772944" class="p_color">+92 21 277 2944</a>.
+  </p>
+  <span class="ficon flaticon-message"></span>
+</div>
 
-        				</div> <!-- End of .wrapper -->
-        			</div> <!-- End of .side_bar -->
+
+            </div>
+
+									</div> <!-- End of .testimonial-carousel-content-box -->
+								</div> <!-- End of .slider_wrapper -->
+   							</div> <!-- End of .sidebar_testimonial -->
+
 
     </div><!-- /.row -->
   </div>
@@ -405,6 +425,11 @@
 
 
 
-
+        <div class="request_quote_footer s_color_bg">
+  <div class="container clear_fix">
+    <p class="float_left">Aziz & Ismail Co. — Income, Sales & Tax advisors helping businesses stay compliant and grow.</p>
+    <a href="{{ url("contact") }}" class="theme_button p_color_bg s_color float_right tran3s">Contact Now</a>
+  </div>
+</div>
 
 @endsection

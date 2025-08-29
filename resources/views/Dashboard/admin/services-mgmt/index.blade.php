@@ -18,8 +18,8 @@
     padding:10px; border:1px solid #ccc; border-radius:50px; width:250px; outline:none; font-size:14px; transition:0.3s;
   }
   .search-input:focus { border-color:rgba(0,0,0,0.35); }
-  .add-new-btn { background-color:#b10937; color:#fff; border:none; padding:10px 20px; border-radius:50px; cursor:pointer; transition:0.3s; text-decoration:none; display:inline-block; }
-  .add-new-btn:hover { background-color:#86092b; color:#fff; }
+  .add-new-btn { background-color: #1d3a7d; color:#fff; border:none; padding:10px 20px; border-radius:50px; cursor:pointer; transition:0.3s; text-decoration:none; display:inline-block; }
+  .add-new-btn:hover { background-color:#fc9928; color:#fff; }
 
   /* Mobile & Tablet */
   @media (max-width:768px){

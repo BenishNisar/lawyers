@@ -697,7 +697,7 @@ h6 {
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color:black;
+  color:;
 }
 
 .sidebar-nav .nav-link.collapsed {
@@ -1241,4 +1241,6 @@ h6 {
 /* icons */
 /* profile */
 /* workingtables */
+
+
 

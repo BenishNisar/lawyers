@@ -304,6 +304,74 @@ header .header_right ul.social_icon li a {
 
 
 /*====================================== Menu ========================================*/
+/* Header logo: don't stretch */
+/* 🔁 REPLACE your current .main_menu .logo img block with this */
+/* .main_menu .logo img{
+  width: 100% !important;
+  height: auto;
+  max-height: none !important;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.main_menu .logo{ overflow: visible; } */
+/* ===== Header tighten: logo left + menu compact ===== */
+.main_menu.only-desktop > .container{
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;                 /* kam gap */
+  padding-left: 8px;        /* container padding thoda kam */
+  padding-right: 8px;
+}
+
+/* Logo: left ko chipka do + thoda chhota */
+.main_menu.only-desktop .logo-link{
+  flex: 0 0 auto;
+  min-width: 205px;        /* pehle 230–260 tha; zaroorat ho to 190–210 try karein */
+  margin-left: -105px;      /* left ko push (zaroort par -16px tak kar sakte ho) */
+  margin-top:-30px;
+}
+
+
+
+.main_menu.only-desktop .logo-img{
+  height: 42px;            /* 40–46px window; jo crisp lage woh set karo */
+  width: auto;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Navbar occupies remaining space */
+.main_menu.only-desktop nav.navbar{ flex: 1 1 auto; overflow: visible; }
+.main_menu.only-desktop #nav-desktop{ width: 100%; float:none !important; }
+
+/* Menu items compact */
+.main_menu.only-desktop .navbar-nav{
+  display: flex;
+  flex-wrap: nowrap;       /* wrap chahiye to 'wrap' kar dena */
+  gap: 6px;
+  justify-content: flex-start; /* right align chahiye to flex-end */
+}
+.main_menu.only-desktop .navbar-nav > li > a{
+  white-space: nowrap;
+  padding: 10px 8px;       /* pehle se chhota */
+  font-size: 13.5px;       /* thoda compact */
+  line-height: 1;
+}
+
+/* Narrow desktop tweaks */
+@media (max-width:1280px){
+  .main_menu.only-desktop .logo-link{ min-width: 195px; margin-left: -14px; }
+  .main_menu.only-desktop .logo-img{ height: 40px; }
+  .main_menu.only-desktop .navbar-nav > li > a{ padding: 9px 7px; font-size: 13px; }
+}
+@media (max-width:1180px){
+  .main_menu.only-desktop .navbar-nav > li > a{ padding: 8px 6px; font-size: 12.8px; }
+}
+
+
 @keyframes menu_sticky {
     0%   {margin-top:-110px;opacity: 0;}
     50%  {margin-top: -90px;opacity: 0;}
@@ -329,6 +397,8 @@ header .header_right ul.social_icon li a {
 .main_menu .navbar-default button {
   float:none;
   margin:0 0 20px 15px;
+  margin-top:20px;
+
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -1677,10 +1747,10 @@ header .header_right ul.social_icon li a {
 }
 /*================================ Footer ============================*/
 footer {
-  background: url(../../images/home/footer.jpg) no-repeat center;
+  background: url(../../images/home/footer.png) no-repeat center;
   height:auto;
   background-size: cover;
-  background-position: -197px 22%;
+  background-position:center;
 }
 footer .overlay {
   width:100%;
@@ -1887,11 +1957,37 @@ footer .bottom_footer ul li a {
   background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 80%);
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 80%);
 }
+/* opacity */
+:root{
+  --brand: #1d3a7d;         /* your logo blue */
+  --footer-tint: #0b3d5a;   /* navy (logo se thoda darker) */
+}
+
+/* Footer overlay: logo-friendly navy tint */
+footer { position:relative; }
+footer .overlay{
+  background: linear-gradient(
+    180deg,
+    rgba(11, 61, 90, .78) 0%,   /* top */
+    rgba(6, 28, 52,  .78) 100%  /* bottom */
+  ) !important;
+}
+
+/* Mobile pe halka sa light, taake photo zyada dabbi na lage */
+@media (max-width: 767px){
+  footer .overlay{
+    background: linear-gradient(
+      180deg,
+      rgba(11, 61, 90, .70),
+      rgba(6, 28, 52,  .70)
+    ) !important;
+  }
+}
 
 /*=============================== Inner Banner =====================*/
 
 .inner_banner {
-  background: url(../../images/home/inner-banner.jpg) no-repeat center;
+  /* background: url(../../images/home/inner-banner.jpg) no-repeat center; */
   background-size: cover;
   text-align: center;
   height:258px;
@@ -1903,13 +1999,28 @@ footer .bottom_footer ul li a {
 }
 .inner_banner .overlay h2 {
   font-size: 48px;
-  color:#fff;
+  color:black;
 }
 .inner_banner .overlay span {
   width:70px;
   height:5px;
   display: block;
   margin: 13px auto 0 auto;
+}
+/* overlay off */
+/* Overlay off */
+.inner_banner .overlay{
+  background: none !important;            /* gradient / rgba sab hata dega */
+  background-color: transparent !important;
+  /* padding rehne dein, kyunki yahi content ko position karta hai */
+}
+
+/* Agar theme pseudo-element se overlay daal rahi ho */
+.inner_banner .overlay::before,
+.inner_banner::before{
+  content: none !important;
+  background: none !important;
+  background-color: transparent !important;
 }
 
 /*============================= Page Breadcrumb =====================*/
@@ -5477,7 +5588,8 @@ body.bg {
 /* Vertical tab button */
 .floating-contact-button{
   writing-mode: vertical-rl;
-  background: linear-gradient(180deg,var(--fc-accent),var(--fc-accent-d));
+  /* background: linear-gradient(180deg,var(--fc-accent),var(--fc-accent-d)); */
+  background-color:#1d3a7d;
   color:#fff;
   padding:14px 10px;
   font-weight:700;
@@ -5762,3 +5874,755 @@ body.bg {
   #contactPageForm .form-actions{ justify-content:stretch; }
   #contactPageForm .btn-submit{ width:100%; min-height:44px; }
 }
+
+
+/* comapny  */
+/* ====== BLOG/NEWS GRID FIX ====== */
+.latest_news--grid .news-grid{
+  display:flex;
+  flex-wrap:wrap;
+  /* apne custom gutters */
+  margin: -12px;               /* outer negative to balance inner padding */
+}
+.latest_news--grid .news-grid > [class*="col-"]{
+  padding: 12px;               /* equal gutters on all breakpoints */
+}
+
+/* Card reset + layout */
+.latest_news--grid .news-card{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  background:#fff;
+  border:1px solid #e9eef3;
+  border-radius:8px;
+  overflow:hidden;
+  text-decoration:none;
+  margin:0;                    /* kill any extra margin */
+}
+
+/* Image block: no layout shift, no extra gaps */
+.latest_news--grid .news-thumb{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:16/9;           /* keeps uniform thumbs */
+}
+.latest_news--grid .news-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;               /* removes bottom whitespace of inline images */
+}
+
+/* Date badge */
+.latest_news--grid .news-date{
+  position:absolute;
+  left:10px;
+  bottom:10px;
+  background:rgba(15,39,66,.92);
+  color:#fff;
+  font-size:12px;
+  padding:4px 8px;
+  border-radius:4px;
+}
+
+/* Body spacing */
+.latest_news--grid .news-body{
+  padding:14px 16px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.latest_news--grid .news-body h5{
+  margin:0;                    /* headings won’t add extra gaps */
+}
+.latest_news--grid .readmore{
+  margin-top:auto;             /* sticks “Read more” to bottom for equal height cards */
+}
+
+/* Small screens: slightly tighter gutters */
+@media (max-width: 767px){
+  .latest_news--grid .news-grid{ margin:-8px; }
+  .latest_news--grid .news-grid > [class*="col-"]{ padding:8px; }
+  .latest_news--grid .news-body{ padding:12px; }
+}
+/* ===== Section spacing ===== */
+.faqAndNews {
+  margin-bottom: 60px;   /* gap below Latest News */
+}
+
+.req_callBack {
+  margin-top: 60px;      /* gap above Request a Call Back */
+  /* padding-top: 20px;  // optional, agar andar bhi thoda sa breathing room chahiye */
+}
+
+/* Partners (optional – agar yeh bhi chipak raha ho) */
+.partners {
+  margin-top: 60px;
+}
+
+/* ===== News grid vertical spacing ===== */
+.news-grid [class*="col-"] {
+  margin-bottom: 24px;   /* rows ke beech space */
+}
+
+/* Responsive: thoda chhota gap mobiles par */
+@media (max-width: 991px) {
+  .faqAndNews { margin-bottom: 40px; }
+  .req_callBack { margin-top: 40px; }
+  .partners { margin-top: 40px; }
+}
+/* Gap under the "Latest News" heading */
+.latest_news .theme_title {
+  margin-bottom: 24px;   /* 32/40 bhi rakh sakte ho */
+}
+
+/* (optional) thoda extra breathing room pure grid ke upar */
+.latest_news .news-grid {
+  margin-top: 8px;
+}
+
+
+/* google maps */
+
+.location-section { padding: 50px 0; }
+.map-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+.map-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map-actions { margin-top: 10px; }
+.address_card { padding: 20px 24px; background: #fff; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+.address_card .contact-list { list-style: none; padding: 0; margin: 0 0 10px; }
+.address_card .contact-list li { margin: 8px 0; line-height: 1.6; }
+.address_card i { width: 18px; text-align: center; margin-right: 6px; }
+.location-copy { margin-top: 10px; }
+
+/* mew */
+
+/* ===== Map / Address section: give real space before footer ===== */
+#google-map-area {
+  position: relative;
+  margin: 0 0 72px;        /* desktop gap before footer */
+  padding: 50px 0;         /* aapki existing padding */
+}
+
+@media (max-width: 991px){
+  #google-map-area { margin-bottom: 88px; }  /* mobile/tablet pe thoda zyada gap */
+}
+
+/* Koi floats ho to clear ho jayein (bootstrap rows safety) */
+#google-map-area .row::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Koi forced z-index agar section/children par hai to neutralize */
+#google-map-area, #google-map-area * {
+  z-index: auto;
+}
+
+/* ===== Footer kabhi upar na aaye ===== */
+footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;     /* themes kabhi -ve/large margin laga dete hain */
+  isolation: isolate;            /* footer overlay apni boundary ke andar rahe */
+}
+
+/* Footer ke overlay ko footer ke andar hi rakho */
+footer .overlay {
+  position: relative;            /* absolute ho to bhi chalega, par relative safe hai */
+  z-index: 0;
+  inset: auto;
+}
+
+/* Agar theme me ye rule hai to nullify karo: */
+footer .bottom_footer {          /* Some themes push/pull this block */
+  margin-top: 0 !important;
+}
+
+/* banners *//* Banner text: always left, tighter spacing, readable width */
+.banner .tp-caption { text-align: left !important; }
+
+.banner .banner__title h1{
+  margin: 0 0 10px;         /* heading-paragraph gap kam */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.banner .banner__text p{
+  margin: 0;                /* extra bottom/top space remove */
+  max-width: 880px;         /* ek clean readable line-length */
+  line-height: 1.45;
+}
+
+/* Small screens: thoda compact */
+@media (max-width: 991px){
+  .banner .banner__text p{ max-width: 620px; }
+}
+@media (max-width: 575px){
+  .banner .banner__text p{ max-width: 94vw; }
+}
+
+/* Banner captions: keep left, but don't stretch full width */
+.banner .tp-caption { text-align: left !important; }
+
+/* Set a readable container for title & paragraph */
+.banner .banner__title,
+.banner .banner__text{
+  width: clamp(280px, 60vw, 980px) !important; /* responsive max width */
+  max-width: 980px !important;
+  white-space: normal !important;              /* force wrapping */
+}
+
+/* Title tweaks */
+.banner .banner__title h1{
+  margin: 0 0 10px;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  /* optional: nicer wrapping on modern browsers */
+  text-wrap: balance;
+}
+
+/* Paragraph tweaks */
+.banner .banner__text p{
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Smaller screens = thoda zyada width allow */
+@media (max-width: 991px){
+  .banner .banner__title,
+  .banner .banner__text{ width: clamp(260px, 82vw, 760px) !important; }
+}
+@media (max-width: 575px){
+  .banner .banner__title,
+  .banner .banner__text{ width: 92vw !important; }
+}
+
+
+/* ==== QUICK MOBILE RESPONSIVE PATCH (paste at END) ==== */
+
+/* 1) Top bar compact: socials/lang hide on phone */
+@media (max-width: 767px){
+  header{ padding:6px 0; }
+  header .header_right ul.social_icon,
+  header .header_right #polyglotLanguageSwitcher{ display:none !important; }
+  header .header_left ul li{ margin-right:10px; }
+  header .header_left ul li a{ font-size:12px; margin-left:8px; }
+}
+
+/* 2) Navbar: logo + toggler aligned */
+@media (max-width: 767px){
+  .main_menu .logo{ margin:0; padding:8px 0; }
+  .main_menu .logo img{ width:auto !important; max-height:44px !important; height:auto !important; }
+  .main_menu .navbar-default{ margin:0; }
+  .navbar-default .navbar-toggle{ margin:8px 0; border-color:transparent; }
+  .navbar-default .navbar-toggle .icon-bar{ background:#272727;}
+  .main_menu .navbar-collapse{ max-height:70vh; overflow-y:auto; }
+  .main_menu .navbar-default .navbar-nav>li>a{ padding:12px 16px; font-size:14px; }
+}
+
+/* 3) Banner/slider text: wrap + smaller sizes */
+@media (max-width: 767px){
+  .banner .tp-caption, .tp-caption{ white-space:normal !important; } /* wrap text */
+  #main_slider h1{ font-size:28px; line-height:1.2; }
+  #main_slider p{ font-size:15px; line-height:1.5; }
+  #main_slider a{ line-height:44px !important; height:44px !important; padding:0 16px !important; }
+  .hephaistos.tparrows{ display:none !important; } /* big arrows off on mobile */
+}
+
+/* 4) “Request Quote” bar: no overlap, center content */
+@media (max-width: 767px){
+  .request_quote{ margin-top:0 !important; padding:14px 0 !important; }
+  .request_quote .container{ display:flex; flex-direction:column; gap:10px; align-items:center; text-align:center; }
+  .request_quote p{ font-size:16px; margin:0; float:none; }
+  .request_quote a{ float:none; }
+}
+
+/* 5) Generic section spacing */
+@media (max-width: 767px){
+  .company_excellance{ margin:40px 0; }
+  .makesUs_special{ height:auto; margin:40px 0; }
+  .ourWP_team{ height:auto; }
+}
+
+/* 6) Sticky menu se banner hide na ho */
+@media (max-width: 767px){
+  .main_menu.fixed + .banner,
+  .main_menu.fixed + #main_slider{ margin-top:60px; }
+}
+
+/* 7) Floating buttons thoda upar — CTA cover na ho */
+@media (max-width: 767px){
+  .wa-widget{ bottom:76px; right:14px; }
+  .scroll-top{ left:14px; bottom:76px; }
+}
+
+/* 8) Very small screens */
+@media (max-width: 380px){
+  #main_slider h1{ font-size:24px; }
+  #main_slider p{ font-size:14px; }
+}
+
+
+/* Banner type + spacing */
+#main_slider .banner__title h3{ margin:0 0 6px; font-weight:700; }
+#main_slider .banner__text p{ margin:0; }
+
+/* readability on bright photos */
+#main_slider .banner__title h3,
+#main_slider .banner__text p{
+  text-shadow: 0 2px 10px rgba(0,0,0,.35);
+}
+
+/* keep captions from touching screen edges on small devices */
+@media (max-width: 991px){
+  #main_slider .banner__title,
+  #main_slider .banner__text{ max-width:86vw !important; }
+}
+
+
+/* Toggle ko container ke right me pin karo */
+.main_menu .container{ position:relative; }
+
+/* ===== Drawer: full height, no bottom gap ===== */
+@media (max-width:991px){
+  .only-mobile .navbar-collapse.drawer{
+    position:fixed !important;
+    top:0;
+    left:0;
+    bottom:auto;
+    width:min(86vw,360px);
+
+
+    height:100vh; max-height:100vh;
+    display:flex; flex-direction:column; overflow:hidden;
+    border-radius:0 16px 16px 0;
+    box-shadow:2px 0 18px rgba(0,0,0,.18);
+    transform:translateX(-100%);
+    transition:transform .28s cubic-bezier(.2,.8,.2,1);
+    z-index:10011;
+  }
+
+  @supports (height: 100svh){
+    .only-mobile .navbar-collapse.drawer{
+      height:100svh; max-height:100svh;
+    }
+  }
+
+  .drawer-head{ flex:0 0 auto; position:sticky; top:0; z-index:2; }
+  .only-mobile .navbar-collapse.drawer > .nav{
+    flex:1 1 auto; overflow-y:auto;
+    padding:8px 8px calc(12px + env(safe-area-inset-bottom, 0));
+  }
+}
+
+
+
+/* mobile toggle */
+/* show/hide two navbars */
+.only-desktop{display:block;}
+.only-mobile{display:none;}
+@media (max-width:991px){
+  .only-desktop{display:none !important;}
+  .only-mobile{display:block !important;}
+}
+
+/* mobile header top + hamburger right */
+.main_menu.only-mobile{position:sticky; top:0; z-index:10010; background:#fff;}
+.only-mobile .navbar{margin:0; border:0; min-height:56px; background:#fff;}
+.only-mobile .navbar-header{float:none; position:relative;}
+.only-mobile .navbar-toggle{
+  display:block; position:absolute; right:12px; top:50%;
+  transform:translateY(-50%); margin:0; border:0; background:transparent !important;
+  z-index:10012;
+}
+.only-mobile .navbar-toggle .icon-bar{background:#222 !important; width:22px;}
+/* outer brand ko chhupa do; drawer ke andar naya logo dikhayenge */
+@media (max-width:991px){
+  .only-mobile .navbar-header .navbar-brand{display:none;}
+}
+
+/* ===== Drawer ===== */
+.only-mobile .navbar-collapse.drawer{
+  position:fixed !important; /* override any old rules */
+  top:0; left:0; bottom:0; height:100% !important;
+  width:84%; max-width:340px;
+  background:#fff; overflow-y:auto;
+  transform:translateX(-100%);
+  transition:transform .28s cubic-bezier(.2,.8,.2,1);
+  will-change:transform;
+  box-shadow:2px 0 18px rgba(0,0,0,.18);
+  z-index:10011;
+}
+.only-mobile .navbar-collapse.drawer.in{transform:translateX(0);}
+.only-mobile .navbar-collapse.drawer.collapsing{
+  height:100% !important; transform:translateX(-100%);
+}
+
+/* Drawer header (logo + close) */
+.drawer-head{
+  position:sticky; top:0; z-index:2;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 14px; background:#fff; border-bottom:1px solid #eee;
+}
+.drawer-head .drawer-logo img{height:40px; width:auto; display:block;}
+.drawer-head .drawer-close{
+  font-size:28px; line-height:1; background:transparent; border:0; padding:4px 8px; cursor:pointer;
+}
+
+/* overlay */
+.drawer-overlay{
+  position:fixed; inset:0; background:rgba(0,0,0,.45);
+  opacity:0; visibility:hidden; transition:opacity .2s ease, visibility 0s .2s;
+  z-index:10009;
+}
+.drawer-overlay.show{opacity:1; visibility:visible; transition:opacity .2s ease;}
+body.no-scroll{overflow:hidden;}
+
+/* menu items */
+.only-mobile .nav>li>a{
+  display:block; padding:12px 16px;
+  font-size:14px; font-weight:600; letter-spacing:.2px;
+  border-bottom:1px solid #eaeaea; text-transform:uppercase;
+}
+.only-mobile .nav>li:last-child>a{border-bottom:0}
+
+/* Services submenu in drawer */
+.only-mobile .nav .sub-menu{display:none; margin:0; padding:0; list-style:none; background:#f8f9fa;}
+.only-mobile .nav .sub-menu li a{padding:10px 22px; font-weight:400; border-bottom:1px solid #eee;}
+
+
+
+@media (max-width: 991px){
+  #floatingContact{ display:none !important; }
+}
+
+
+
+/* banners */
+/* Media Queries for Mobile Devices */
+  @media screen and (max-width: 768px) {
+    /* Adjust the title font size for mobile */
+    .banner__title {
+      font-size: 22px !important;
+      line-height: 28px !important;
+      text-align: center !important;
+      margin-bottom: 10px; /* Adding some margin to avoid title touching the text */
+    }
+
+    /* Adjust text font size and line height for mobile */
+    .banner__text {
+      font-size: 14px !important;
+      line-height: 22px !important;
+      text-align: center !important;
+      padding: 0 15px; /* Add padding to prevent text touching screen edges */
+    }
+
+    /* Adjust the slide height for better mobile display */
+    .rev-slidebg {
+      height: auto !important; /* Ensure the background image height adjusts properly */
+    }
+
+    /* Adjust vertical offsets for title and text */
+    .tp-caption {
+      data-voffset: ['-70','-70','-60','-45'] !important; /* Adjust offset for better visibility */
+    }
+
+    /* Make sure images and text fit properly within mobile screen width */
+    .rev_slider {
+      height: 100% !important; /* Make slider fill full height */
+    }
+  }
+
+
+  /* fronend banners update */
+  /* Common */
+.only-desktop{display:block}
+.only-mobile{display:none}
+@media (max-width:767px){
+  .only-desktop{display:none}
+  .only-mobile{display:block}
+}
+
+.hero { position:relative; }
+/* .hero-item{
+  position:relative;
+  background-size:cover;
+   background-position:center;
+  min-height:520px;
+   display:flex;
+    align-items:center;
+} */
+ .hero-item{
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-start;           /* center -> flex-start */
+  min-height: 520px;
+  padding-top: clamp(90px, 19vh, 200px);   /* <-- yahi se niche aayega */
+  padding-bottom: clamp(24px, 8vh, 120px); /* neeche thoda breathing */
+}
+
+/* Desktop pe zyada gap */
+@media (min-width: 992px){
+  .hero-item{ padding-top: 22vh; }
+}
+
+/* Mobile pe thoda kam gap (thumb reach friendly) */
+.hero-item--mobile{ min-height: 360px; }
+@media (max-width: 767px){
+  .hero-item{ padding-top: 14vh; padding-bottom: 8vh; }
+}
+.hero-item--mobile{ min-height:360px; }
+.hero-overlay{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.45)); }
+.hero .container{ position:relative; z-index:2;
+ }
+.hero-copy{ max-width:760px }
+.hero-title{ color:#fff; font-weight:700;
+     margin:0 0 10px;
+    line-height:1.2; font-size:42px;
+
+
+}
+.hero-text{ color:#f1f5f9; font-size:18px; line-height:1.6; margin:0 }
+@media (min-width:992px){ .hero-item{min-height:560px} .hero-title{font-size:46px} .hero-text{font-size:19px} }
+@media (max-width:767px){ .hero-title{font-size:24px} .hero-text{font-size:14px} }
+
+.carousel-indicators li{ width:10px;height:10px;border-radius:50%;border:1px solid #fff;
+
+    background:rgba(255,255,255,.35) }
+.carousel-indicators .active{ background:#fff }
+.carousel-control .glyphicon{ color:#fff; text-shadow:none; opacity:.9 }
+
+/* If your header is fixed and overlapping, push the hero down a bit: */
+/* .hero { margin-top: 80px; }  // adjust to your header height */
+
+:root { --brand: #1d3a7d; }
+
+/* Bootstrap ke default dark overlays hatado */
+.carousel-control.left,
+.carousel-control.right { background-image: none !important; }
+
+/* Common slider wrapper safety */
+.hero, .carousel { position: relative; }
+
+/* FA arrow controls — desktop default: vertical center @ edges */
+.hero-control{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: auto; right: auto;
+  width: auto; height: auto;
+  background: transparent; opacity: 1;
+  text-shadow: none; border: 0;
+  z-index: 6; /* overlay/text ke upar */
+  padding: 0; line-height: 1;
+}
+.hero-control--left  { left: 18px; }
+.hero-control--right { right: 18px; }
+
+.hero-control i{
+  display: inline-block;
+  width: 44px; height: 44px; line-height: 44px;
+  text-align: center; font-size: 20px;
+  color: #fff;                 /* arrow color */
+  background: var(--brand);    /* brand pill */
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25), inset 0 0 0 2px rgba(255,255,255,.75);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.hero-control:hover i{
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.9);
+}
+
+/* Indicators (optional polish) */
+.carousel-indicators li{
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,.45); border: 0;
+}
+.carousel-indicators .active{ background:#fff; }
+
+/* Make sure slide overlay/content stays below controls if any */
+.hero .hero-overlay { z-index: 2; }
+.hero .container     { position: relative; z-index: 3; }
+
+/* MOBILE — thumb friendly: bottom corners, bigger tap area */
+/* @media (max-width: 767px){
+  .hero-control{
+    top: auto; bottom: 14px; transform: none;
+  }
+  .hero-control--left  { left: 10px; }
+  .hero-control--right { right: 10px; }
+  .hero-control i{
+    width: 40px; height: 40px; line-height: 40px; font-size: 18px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25), inset 0 0 0 2px rgba(255,255,255,.7);
+  }
+} */
+
+/* carousel */
+/* FORCE CENTER: desktop + mobile — Bootstrap controls & custom .hero-control dono */
+.hero .carousel-control,
+.hero-control{
+  position: absolute;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%);
+  background: transparent !important;
+  width: auto; height: auto;
+  opacity: 1; text-shadow: none;
+  z-index: 6;
+}
+
+/* left/right placement */
+.hero .carousel-control.left,
+.hero-control--left  { left: 18px; right: auto; }
+
+.hero .carousel-control.right,
+.hero-control--right { right: 18px; left: auto; }
+
+/* icon pills (Font Awesome) */
+.hero .carousel-control .fa,
+.hero-control i{
+  display:inline-block;
+  width:44px; height:44px; line-height:44px; text-align:center;
+  font-size:20px; color:#fff; background:var(--brand);
+  border-radius:50%;
+  box-shadow:0 6px 16px rgba(0,0,0,.25), inset 0 0 0 2px rgba(255,255,255,.75);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.hero .carousel-control:hover .fa,
+.hero-control:hover i{
+  transform:scale(1.08);
+  box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.9);
+}
+
+/* mobile: thoda bada tap area, but centered hi rahe */
+/* === MOBILE: wider copy area + safe room for left arrow === */
+@media (max-width: 767px){
+  /* thoda chhota pill taa-ke space mile */
+  :root{ --ctrl-size: 36px; --ctrl-gap: 6px; }
+
+  .hero-control i{
+    width: var(--ctrl-size);
+    height: var(--ctrl-size);
+    line-height: var(--ctrl-size);
+    font-size: 18px;
+  }
+  .hero-control--left  { left: var(--ctrl-gap);  right:auto; }
+  .hero-control--right { right:var(--ctrl-gap); left:auto; }
+
+  /* 👉 sirf copy ko padding do; container ko nahi */
+  .hero .hero-copy{
+    max-width: 100%;              /* width unlock */
+    /* left arrow ke liye safe space, right side minimal */
+    padding-left:  calc(var(--ctrl-size) + var(--ctrl-gap) + 6px);
+    padding-right: 12px;
+  }
+
+  /* existing vertical spacing */
+  .hero-item{ padding-top: 14vh; padding-bottom: 8vh; }
+}
+
+
+/* btn */
+:root { --brand: #1d3a7d; }
+
+/* Main style */
+.btn-submit{
+  background: var(--brand) !important;
+  color:#fff !important;
+  border:0;
+  padding:12px 18px;
+  border-radius:8px;
+  font-weight:600;
+  transition: box-shadow .15s ease;
+}
+
+/* Hover/Focus/Active — same color */
+.btn-submit:hover,
+.btn-submit:focus,
+.btn-submit:active{
+  background: var(--brand) !important;
+  color:#fff !important;
+  box-shadow: 0 0 0 3px rgba(29,58,125,.15);
+  outline: none;
+}
+
+/* Disabled/Loading — same color, thoda dim */
+.btn-submit:disabled,
+.btn-submit[disabled]{
+  background: var(--brand) !important;
+  color:#fff !important;
+  opacity:.7;
+  cursor:not-allowed;
+}
+
+/* (optional) spinner ko white dekhane ke liye */
+.btn-spinner{
+  border:2px solid rgba(255,255,255,.5);
+  border-top-color:#fff;
+}
+
+
+/* company */
+/* header — styling ko light touch, section ke andar scoped */
+.company_excellance .excellence-intro{
+  text-align:center;
+  margin: 8px 0 28px;
+}
+.company_excellance .ex-eyebrow{
+  margin:0 0 6px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#1d3a7d;               /* brand */
+}
+.company_excellance .ex-title{
+  margin:0 0 8px;
+  font-weight:700;
+  line-height:1.25;
+}
+.company_excellance .ex-lead{
+  margin:0 auto;
+  max-width:840px;
+  color:#415466;
+  line-height:1.7;
+}
+
+/* poori card clickable, but aapka design intact */
+.company_excellance .ex-card-link{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+}
+.company_excellance .ex-card-link:focus{
+  outline:2px solid #1d3a7d;
+  outline-offset:4px;
+  border-radius:10px; /* focus ring smooth */
+}
+
+@media (max-width:767px){
+  .company_excellance .excellence-intro{ text-align:left; }
+  .company_excellance .ex-lead{ max-width:100%; }
+}
+
+
+
+
+/*  */
+.google-map-home{
+  position: relative;
+  width:100%;
+  aspect-ratio:16/9;   /* map height control */
+  border-radius:12px;
+  overflow:hidden;
+}
+.google-map-home iframe{
+  position:absolute; inset:0;
+  width:100%; height:100%; border:0;
+}
+.map-actions{ margin-top:10px; }

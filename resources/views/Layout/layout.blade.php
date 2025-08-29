@@ -14,6 +14,8 @@
 		<title>Aziz Ismail & Co</title>
 {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfZ6P35JfYx1pU8tR+6v3vB0s6H5c0vQyB+99lB3cD9Jm0sYF2T3Z0f8Xk3O3QvGvG0B4v8F4YkO5N2wC2RZrA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
 <!-- Font Awesome 5.15.4 (Free) + v4 shims -->
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ6v0u7yZXs6F8rh7Lo2P7Bpn6k0UJkljvGZqxx5v1rUJk5Sbzf9G7QFGHpX" crossorigin="anonymous"> --}}
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/v4-shims.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -60,7 +62,7 @@
 
 
        <!-- ==================== Style Switcher ==================== -->
-		<div class="switcher">
+		{{-- <div class="switcher">
 
 			<!-- Switcher button -->
 			<div class="switch_btn">
@@ -133,7 +135,7 @@
 					</div>
 
 			</div> <!-- /switch_menu -->
-		</div>
+		</div> --}}
 
 		<!-- ==================== Style Switcher ==================== -->
 
@@ -213,194 +215,128 @@
 
         <!-- Menu ___________________________________ -->
 
-        <div class="main_menu">
-        	<div class="container">
-        		<div class="logo float_left">
-        			<a href="index.html"><img src="images/logo/logo2.png" alt="logo" class="img-responsive"></a>
-        		</div> <!-- End of .logo -->
-
-        		<nav class="navbar navbar-default float_left">
-				   <!-- Brand and toggle get grouped for better mobile display -->
-				   <div class="navbar-header">
-				     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-				       <span class="sr-only">Toggle navigation</span>
-				       <span class="icon-bar"></span>
-				       <span class="icon-bar"></span>
-				       <span class="icon-bar"></span>
-				     </button>
-				   </div>
-				   <!-- Collect the nav links, forms, and other content for toggling -->
-				   <div class="collapse navbar-collapse float_left" id="navbar-collapse-1">
-				     <ul class="nav navbar-nav">
-				       <li><a href="{{ asset("/") }}">Home</a></li>
-
-				       {{-- <li class="dropdown"><a href="about.html">About Us</a>
-				       		<ul class="sub-menu">
-				       			<li><a href="company-history.html">Company History</a></li>
-				       			<li><a href="our-team.html">Our Team</a></li>
-				       			<li><a href="our-partners.html">Our Partners</a></li>
-				       			<li><a href="faq.html">FAQ</a></li>
-				       			<li class="dropdown"><a href="career.html">Careers <i class="fa fa-caret-right" aria-hidden="true"></i></a>
-				       				<ul class="sub-sub-menu">
-				       					<li><a href="career-single.html">Career Single</a></li>
-				       				</ul> <!-- End of .sub-sub-menu -->
-				       			</li>
-				       			<li><a href="client-feedback.html">Client Feedback</a></li>
-				       		</ul> <!-- End of .sub-menu -->
-				       </li> --}}
-				       {{-- <li class="dropdown"><a href="{{ asset("/services") }}">Services</a>
-				       		<ul class="sub-menu fix">
-				       			<li><a href="service.html">Income Tax</a></li>
-				       			<li><a href="restructuring-turnaround.html">Sales TAX</a></li>
-				       			<li><a href="business-planning.html">Book Keeping</a></li>
-				       			<li><a href="exit-succession.html">Company Law</a></li>
-				       			<li><a href="strategic-planning.html">Trade Mark</a></li>
-				       			<li><a href="global-risk.html">Copy Rights </a></li>
-				       			<li><a href="audit-assurance.html">Software</a></li>
-
-				       		</ul>
-				       </li> --}}
-                       <li class="dropdown">
-  <a href="{{ route('Home.services') }}">Services</a>
-  <ul class="sub-menu fix">
-    @forelse($servicesMenu as $svc)
-      <li><a href="{{ route('Home.services.show', $svc->slug) }}">{{ $svc->title }}</a></li>
-    @empty
-      <li><a href="javascript:void(0)">Coming soon…</a></li>
-    @endforelse
-  </ul>
-</li>
-
-              <li><a href="{{ route('Home.business-sectors') }}">Business Sectors</a></li>
-              <li><a href="{{ asset("/administration") }}">Administration</a></li>
-              <li><a href="{{ asset("/softwares") }}">Softwares</a></li>
-                           <li><a href="{{ asset("/clients") }}">Clients</a></li>
-                            <li><a href="{{ route('Home.downloads') }}">Downloads</a></li>
-                            <li><a href="{{ asset("/careers") }}">Jobs & Career</a></li>
+<!-- DESKTOP NAVBAR -->
+<div class="main_menu only-desktop">
+  <div class="container">
+    {{-- <a href="{{ asset('/') }}" class="logo-link" title="Home" aria-label="Home">
+      <img class="logo-img" src="{{ asset('assets/images/logo/azizlogo.png') }}"  alt="Aziz Law Logo">
+    </a> --}}
+    <a class="navbar-brand logo-link" href="{{ asset('/') }}" aria-label="Home">
+  <picture>
+    <!-- Mobile: compact logo (tagline ke bina) -->
+    <source media="(max-width: 991px)"
+            srcset="{{ asset('assets/images/logo/azizlogo-compact@2x.png') }} 2x,
+                    {{ asset('assets/images/logo/azizlogo-compact.png') }} 1x">
+    <!-- Desktop: full logo -->
+    <img class="logo-img"
+         src="{{ asset('assets/images/logo/azizlogo.png') }}"
+         srcset="{{ asset('assets/images/logo/azizlogo@2x.png') }} 2x,
+                 {{ asset('assets/images/logo/azizlogo@3x.png') }} 3x"
+         width="220" height="44"
+         alt="Aziz Ismail &amp; Co.">
+  </picture>
+</a>
 
 
-				       {{-- <li class="dropdown"><a href="#">News</a>
-				       		<ul class="sub-menu">
-				       			<li><a href="blog-default.html">Default</a></li>
-				       			<li><a href="blog-grid.html">Grid Style Layout</a></li>
-				       			<li><a href="blog-grid-sidebar.html">Grid With Sidebar</a></li>
-				       			<li><a href="blog-list.html">List Layout</a></li>
-				       			<li><a href="blog-details.html">Single Detail</a></li>
-				       		</ul> <!-- End of .sub-menu -->
-				       </li>
-				       <li class="dropdown"><a href="#">Projects</a>
-				       		<ul class="sub-menu">
-				       			<li><a href="project-grid.html">Projects Grid</a></li>
-				       			<li><a href="project-filter.html">Projects Grid With Filter</a></li>
-				       			<li><a href="project-masonary.html">Projects Masonary</a></li>
-				       			<li><a href="project-single.html">Single Detail</a></li>
-				       		</ul>
-				       </li>
-				       <li class="dropdown"><a href="#">Shop</a>
-				       		<ul class="sub-menu">
-				       			<li><a href="shop.html">Default Shop</a></li>
-				       			<li><a href="shop-width-sidebar.html">Shop With Sidebar</a></li>
-				       			<li><a href="shop-single.html">Product Details</a></li>
-				       			<li><a href="shop-cart.html">Cart Page</a></li>
-				       			<li><a href="checkout.html">Checkout Page</a></li>
-				       		</ul>
-				       </li> --}}
-				       <li><a href="{{ asset("/about") }}">About Us</a></li>
-				       <li><a href="{{ asset("/contact") }}">Contact Us</a></li>
-
-
-				     </ul>
-				   </div>
-                   <!-- /.navbar-collapse -->
-				</nav>
-
-				{{-- <div class="nav_right_area float_right">
-					<div class="search_option float_left">
-				   		<button class="search tran3s dropdown-toggle" id="searchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search" aria-hidden="true"></i></button>
-				   		<form action="#" class="p_color_bg dropdown-menu" aria-labelledby="searchDropdown">
-				   			<input type="text" placeholder="Search here.....">
-				   			<button class="s_color_bg p_color"><i class="fa fa-search" aria-hidden="true"></i></button>
-				   		</form>
-				   </div>
-
-				   <div class="cart_option float_left">
-				   		<button class="cart tran3s dropdown-toggle" id="cartDropdown"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="s_color_bg p_color">0</span></button>
-				   		<div class="cart_list p_color_bg" aria-labelledby="cartDropdown">
-				   			<ul>
-				   				<li>
-				   					<div class="cart_item_wrapper clear_fix">
-				   						<div class="img_holder float_left"><img src="images/home/cart1.jpg" alt="Cart Image" class="img-responsive"></div> <!-- End of .img_holder -->
-
-				   						<div class="item_deatils float_left">
-				   							<h6>Lords Of Strategy</h6>
-				   							<ul>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											</ul>
-											<span class="font_fix">$ 34.99</span>
-				   						</div> <!-- End of .item_deatils -->
-				   					</div> <!-- End of .cart_item_wrapper -->
-				   				</li>
-
-				   				<li>
-				   					<div class="cart_item_wrapper clear_fix">
-				   						<div class="img_holder float_left"><img src="images/home/cart2.jpg" alt="Cart Image" class="img-responsive"></div> <!-- End of .img_holder -->
-
-				   						<div class="item_deatils float_left">
-				   							<h6>Good To Great</h6>
-				   							<ul>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											</ul>
-											<span class="font_fix">$ 26.99</span>
-				   						</div> <!-- End of .item_deatils -->
-				   					</div> <!-- End of .cart_item_wrapper -->
-				   				</li>
-
-				   				<li>
-				   					<div class="cart_item_wrapper clear_fix">
-				   						<div class="img_holder float_left"><img src="images/home/cart3.jpg" alt="Cart Image" class="img-responsive"></div> <!-- End of .img_holder -->
-
-				   						<div class="item_deatils float_left">
-				   							<h6>Start From The Art</h6>
-				   							<ul>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											</ul>
-											<span class="font_fix">$ 26.99</span>
-				   						</div> <!-- End of .item_deatils -->
-				   					</div> <!-- End of .cart_item_wrapper -->
-				   				</li>
-				   			</ul>
-
-				   			<div class="cart_total clear_fix">
-
-				   				<span class="total font_fix float_left">Total - 140$</span>
-				   				<a href="#" class="s_color_bg float_right tran3s">View Cart</a>
-				   			</div>
-				   		</div> <!-- End of .cart_list -->
-				   </div> <!-- End of .cart_option -->
-				   <div class="clear_fix"></div>
-				</div> --}}
-			<div class="clear_fix"></div>
-        	</div> <!-- End of .container -->
-        </div> <!-- End of .main_menu -->
+    <nav class="navbar navbar-default" >
+      <div class="navbar-collapse" id="nav-desktop">
+        <ul class="nav navbar-nav">
+          <li><a href="{{ asset('/') }}">Home</a></li>
+          <li class="dropdown">
+            <a href="{{ route('Home.services') }}">Services</a>
+            <ul class="sub-menu fix">
+              @forelse($servicesMenu as $svc)
+                <li><a href="{{ route('Home.services.show', $svc->slug) }}">{{ $svc->title }}</a></li>
+              @empty
+                <li><a href="javascript:void(0)">Coming soon…</a></li>
+              @endforelse
+            </ul>
+          </li>
+          <li><a href="{{ route('Home.business-sectors') }}">Business Sectors</a></li>
+          <li><a href="{{ asset('/administration') }}">Administration</a></li>
+          <li><a href="{{ asset('/softwares') }}">Softwares</a></li>
+          <li><a href="{{ asset('/clients') }}">Clients</a></li>
+          <li><a href="{{ route('Home.downloads') }}">Downloads</a></li>
+          <li><a href="{{ asset('/careers') }}">Jobs & Career</a></li>
+          <li><a href="{{ asset('/blogs') }}">Blogs</a></li>
+          <li><a href="{{ asset('/about') }}">About Us</a></li>
+          <li><a href="{{ asset('/contact') }}">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
 
 
 
+<!-- MOBILE NAVBAR -->
+<!-- MOBILE NAVBAR -->
+<div class="main_menu only-mobile">
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+        <!-- mobile bar me outer brand hide karenge; drawer ke andar naya logo hoga -->
+        {{-- <a class="navbar-brand logo-link" href="{{ asset('/') }}">
+          <img class="logo-img" src="{{ asset('assets/images/logo/aziz_logo.jpg') }}" style="width:100px;height:78px" alt="Aziz Law Logo">
+        </a> --}}
+<a class="navbar-brand logo-link" href="{{ asset('/') }}">
+  <img class="logo-img" src="{{ asset('assets/images/logo/azizlogo.png') }}" alt="Aziz Ismail & Co.">
+</a>
+
+        <button type="button" class="navbar-toggle collapsed"
+                data-toggle="collapse" data-target="#nav-mobile"
+                aria-expanded="false" aria-controls="nav-mobile"
+                aria-label="Toggle navigation">
+          <span  class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- Drawer -->
+      <div class="collapse navbar-collapse drawer" id="nav-mobile">
+        <!-- drawer header (logo + close) -->
+        <div class="drawer-head">
+          <a class="drawer-logo" href="{{ asset('/') }}">
+            <img src="{{ asset('assets/images/logo/azizlogo.png') }}" alt="Aziz Law Logo">
+          </a>
+          <button class="drawer-close" type="button" data-toggle="collapse" data-target="#nav-mobile" aria-label="Close menu">×</button>
+        </div>
+
+        <ul class="nav navbar-nav">
+          <li><a href="{{ asset('/') }}">Home</a></li>
+          <li class="dropdown">
+            <a href="{{ route('Home.services') }}">Services</a>
+            <ul class="sub-menu fix">
+              @forelse($servicesMenu as $svc)
+                <li><a href="{{ route('Home.services.show', $svc->slug) }}">{{ $svc->title }}</a></li>
+              @empty
+                <li><a href="javascript:void(0)">Coming soon…</a></li>
+              @endforelse
+            </ul>
+          </li>
+          <li><a href="{{ route('Home.business-sectors') }}">Business Sectors</a></li>
+          <li><a href="{{ asset('/administration') }}">Administration</a></li>
+          <li><a href="{{ asset('/softwares') }}">Softwares</a></li>
+          <li><a href="{{ asset('/clients') }}">Clients</a></li>
+          <li><a href="{{ route('Home.downloads') }}">Downloads</a></li>
+          <li><a href="{{ asset('/careers') }}">Jobs & Career</a></li>
+          <li><a href="{{ asset('/blogs') }}">Blogs</a></li>
+          <li><a href="{{ asset('/about') }}">About Us</a></li>
+          <li><a href="{{ asset('/contact') }}">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Overlay -->
+      <div class="drawer-overlay" id="nav-mobile-overlay"></div>
+    </nav>
+  </div>
+</div>
 
 
         <!-- Floating Contact: START -->
-<div class="floating-contact-wrapper" id="floatingContact">
+<div class="floating-contact-wrapper  only-desktop" id="floatingContact">
   <!-- Vertical Tab Button -->
   <button class="floating-contact-button" id="openContactBtn" aria-expanded="false" aria-controls="contactFloatingForm">
     <i class="fas fa-envelope" aria-hidden="true"></i>
@@ -463,8 +399,8 @@
         <input type="text" name="website" tabindex="-1" autocomplete="off" />
       </div> --}}
 
-      <button type="submit" id="contactSubmitBtn" class="btn-submit">
-        <span class="btn-text">Submit</span>
+      <button type="submit" id="contactSubmitBtn" class="btn-submit" style="background-color:#1d3a7d;">
+        <span class="btn-text" >Submit</span>
         <span class="btn-spinner" aria-hidden="true"></span>
       </button>
 
@@ -487,7 +423,7 @@
 
           <!-- About -->
           <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 footer_logo" itemscope itemtype="https://schema.org/LegalService">
-            <a href="{{ url('/') }}"><img src="{{ asset('assets/images/logo/footer-logo2.png') }}" alt="Aziz Ismail &amp; Co. logo" itemprop="logo"></a>
+            <a href="{{ url('/') }}"><img style="width:130px;" src="{{ asset('assets/images/logo/azizlogo.png') }}" alt="Aziz Ismail &amp; Co. logo" itemprop="logo"></a>
             <p>
               <strong itemprop="name">Aziz Ismail &amp; Co.</strong> — The Firm of Income Tax &amp; Sales Tax Lawyers (est. 1975).
               We represent businesses and salaried individuals in <em>Income Tax, Sales Tax, Corporate/SECP compliance</em> and <em>Intellectual Property</em>.
@@ -664,6 +600,9 @@
 <div id="toaster" aria-live="polite" aria-atomic="true"></div>
 
 		<!-- Js File_________________________________ -->
+<!-- Add Bootstrap JS and Popper.js -->
+{{-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script> --}}
 
 		<!-- j Query -->
 		<script type="text/javascript" src="{{ asset('assets/js/jquery-2.1.4.js') }}"></script>
@@ -1310,5 +1249,115 @@ function basicValidate(){
 
 </script>
 
+<script>
+    (function($){
+  $(function(){
+    $('.news_slider_ai').owlCarousel({
+      loop:true,
+      margin:20,
+      nav:true,
+      dots:false,
+      autoplay:true,
+      autoplayTimeout:5200,
+      autoplayHoverPause:true,
+      smartSpeed:650,
+      navText:[
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+      ],
+      responsive:{
+        0:{ items:1 },
+        576:{ items:1 },
+        768:{ items:2 },
+        992:{ items:3 },
+        1200:{ items:3 }
+      }
+    });
+  });
+})(jQuery);
+</script>
+<script>
+$(function(){
+  var $drawer  = $('#nav-mobile');
+  var $overlay = $('#nav-mobile-overlay');
+
+  // open/close => overlay + lock scroll
+  $drawer.on('shown.bs.collapse', function(){
+    $('body').addClass('no-scroll'); $overlay.addClass('show');
+  });
+  $drawer.on('hidden.bs.collapse', function(){
+    $('body').removeClass('no-scroll'); $overlay.removeClass('show');
+  });
+
+  // overlay tap closes
+  $overlay.on('click', function(){ $drawer.collapse('hide'); });
+
+  // Mobile "Services" submenu toggle
+  $(document).on('click', '.only-mobile .navbar-nav > li.dropdown > a', function(e){
+    var $menu = $(this).siblings('.sub-menu');
+    if ($menu.length){ e.preventDefault(); $menu.slideToggle(180); }
+  });
+});
+</script>
+<script>
+$(function(){
+  var $drawer  = $('#nav-mobile');
+  var $overlay = $('#nav-mobile-overlay');
+
+  $drawer.on('shown.bs.collapse', function(){
+    $('body').addClass('no-scroll'); $overlay.addClass('show');
+  });
+  $drawer.on('hidden.bs.collapse', function(){
+    $('body').removeClass('no-scroll'); $overlay.removeClass('show');
+  });
+
+  // overlay / close button se band
+  $overlay.on('click', function(){ $drawer.collapse('hide'); });
+  $(document).on('click', '.drawer-close', function(){ $drawer.collapse('hide'); });
+
+  // drawer ke andar Services submenu toggle (anchor pe click)
+  $(document).on('click', '.only-mobile .navbar-nav > li.dropdown > a', function(e){
+    var $m = $(this).siblings('.sub-menu');
+    if($m.length){ e.preventDefault(); $m.slideToggle(180); }
+  });
+
+  // normal link click => drawer close
+  $(document).on('click', '.only-mobile .navbar-nav > li:not(.dropdown) > a', function(){
+    $drawer.collapse('hide');
+  });
+});
+
+
+</script>
+
+<script>
+$(function(){
+  var $drawer  = $('#nav-mobile');
+  var $overlay = $('#nav-mobile-overlay');
+
+  $drawer.on('shown.bs.collapse', function(){
+    $('body').addClass('no-scroll'); $overlay.addClass('show');
+  });
+  $drawer.on('hidden.bs.collapse', function(){
+    $('body').removeClass('no-scroll'); $overlay.removeClass('show');
+  });
+
+  $overlay.on('click', function(){ $drawer.collapse('hide'); });
+  $(document).on('click', '.drawer-close', function(){ $drawer.collapse('hide'); });
+
+  // submenu toggle + arrow rotation
+  $(document).on('click', '.only-mobile .navbar-nav > li.dropdown > a', function(e){
+    var $li = $(this).parent();
+    var $m  = $(this).siblings('.sub-menu');
+    if($m.length){ e.preventDefault(); $m.slideToggle(180); $li.toggleClass('open'); }
+  });
+
+  // normal link click => close
+  $(document).on('click', '.only-mobile .navbar-nav > li:not(.dropdown) > a', function(){
+    $drawer.collapse('hide');
+  });
+});
+
+</script>
 
 </html>

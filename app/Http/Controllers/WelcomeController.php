@@ -13,23 +13,27 @@ use App\Models\Banner;
 class WelcomeController extends Controller
 {
     //
-    public function index() {
-        // Featured Blog (ID 6)
-        $featuredBlog = Blog::find(6);
+public function index() {
+    $featuredBlog = Blog::find(6);
 
-        // Latest 3 blogs excluding featured one
-        $latestBlogs = Blog::where('id', '!=', 6)
-                           ->latest()
-                           ->take(3)
-                           ->get();
-                        //    slides
-                        $slides = Banner::whereIn('id', [1,2,3])
+    $latestBlogs = Blog::where('id', '!=', 6)
+                       ->latest()
+                       ->take(3)
+                       ->get();
+
+    // ⬇️ Yahin change karo: 6 → 3
+    $newsBlogs = Blog::latest()
+        ->take(3)
+        ->get(['slug','title','short_description','featured_image','created_at','date']);
+
+    $slides = Banner::whereIn('id', [1,2,3])
         ->orderByRaw('FIELD(id,1,2,3)')
         ->get()
         ->keyBy('id');
 
-        return view("Home.welcome", compact('featuredBlog', 'latestBlogs','slides'));
-    }
+    return view("Home.welcome", compact('featuredBlog','latestBlogs','slides','newsBlogs'));
+}
+
 
 
     // public function store(Request $request)

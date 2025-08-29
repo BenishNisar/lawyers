@@ -18,7 +18,7 @@
         <div class="page-breadcrumb p_color_bg">
         	<div class="container clear_fix">
         		<ul class="text-center">
-        			<li><a href="index.html">Home</a></li>
+        			<li><a href="{{ asset("/") }}">Home</a></li>
         			<li><i class="fa fa-caret-right" aria-hidden="true"></i></li>
         			<li>Contact</li>
         		</ul>
@@ -178,39 +178,58 @@ Country*</label>
 
 
 		<!-- Google map _________________________________ -->
+		<!-- Google map _________________________________ -->
+	<!-- Location / Map -->
+<!-- Google map _________________________________ -->
 		<section id="google-map-area">
-			<div class="google-map-home skin-2" id="contact-google-map" data-map-lat="40.925372" data-map-lng="-74.276544" data-icon-path="images/logo/1.png" data-map-title="Awesome Place" data-map-zoom="12"></div>
+			{{-- <div class="google-map-home skin-3" id="contact-google-map" data-map-lat="40.925372" data-map-lng="-74.276544" data-icon-path="images/logo/1.png" data-map-title="Awesome Place" data-map-zoom="12"></div> --}}
+  <div class="google-map-home skin-3">
+    <iframe
+      title="Aziz Ismail &amp; Co. — Head Office (Karachi)"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen
+      src="https://www.google.com/maps?q=305,+Frere+Business+Centre,+Frere+Road,+Adjacent+Akhbar+Market,+Saddar,+Karachi-75350+(Pakistan)&hl=en&z=16&output=embed">
+    </iframe>
+  </div>
 
+  <!-- optional: button -->
+  <div class="map-actions">
+    <a class="s_color" target="_blank"
+       href="https://www.google.com/maps?q=305,+Frere+Business+Centre,+Frere+Road,+Adjacent+Akhbar+Market,+Saddar,+Karachi-75350+(Pakistan)">
+      View on Google Maps
+    </a>
+  </div>
 			<div class="address_wrapper">
 				<div class="container">
 					<div class="map_address">
 						<div class="item">
-							<h5 class="s_color">Head Quator - United States</h5>
+							<h5 class="s_color">Pakistan-Frere Business Centre</h5>
 
 							<ul>
-								<li><i class="fa fa-map-marker s_color" aria-hidden="true"></i>001 Columbus Road, Floor 4, San Francisco CA 9100</li>
-								<li><i class="fa fa-phone s_color" aria-hidden="true"></i><a href="tel:00-700-6202">(+91) 00-700-6202.</a></li>
-								<li><i class="fa fa-envelope s_color" aria-hidden="true"></i><a href="#">Support&ConsultPress.com</a></li>
+								{{-- <li><i class="fa fa-map-marker s_color" aria-hidden="true"></i>001 Columbus Road, Floor 4, San Francisco CA 9100</li> --}}
+								<li><i class="fa fa-phone s_color" aria-hidden="true"></i><a href="tel:00-700-6202">0092-21-2772944</a></li>
+								<li><i class="fa fa-envelope s_color" aria-hidden="true"></i><a href="#">info@azizismail.com</a></li>
 							</ul>
 						</div> <!-- End of .item -->
 
 						<div class="item">
-							<h5 class="s_color">London - Slaes Office</h5>
+							<h5 class="s_color">Pakistan-Frere Business Centre</h5>
 
 							<ul>
-								<li><i class="fa fa-map-marker s_color" aria-hidden="true"></i>789 Park Road, Foresthill London</li>
-								<li><i class="fa fa-phone s_color" aria-hidden="true"></i><a href="tel:00-700-6202">(+91) 00-700-6202.</a></li>
-								<li><i class="fa fa-envelope s_color" aria-hidden="true"></i><a href="#">Support&ConsultPress.com</a></li>
+								{{-- <li><i class="fa fa-map-marker s_color" aria-hidden="true"></i>789 Park Road, Foresthill London</li> --}}
+								<li><i class="fa fa-phone s_color" aria-hidden="true"></i><a href="tel:00-700-6202">0092-21-2772944</a></li>
+								<li><i class="fa fa-envelope s_color" aria-hidden="true"></i><a href="#">info@azizismail.com</a></li>
 							</ul>
 						</div> <!-- End of .item -->
 
 						<div class="item">
-							<h5 class="s_color">Spain - Support Center</h5>
+							<h5 class="s_color">Pakistan-Frere Business Centre</h5>
 
 							<ul>
-								<li><i class="fa fa-map-marker s_color" aria-hidden="true"></i>Bilbao Street, Barcelona</li>
-								<li><i class="fa fa-phone s_color" aria-hidden="true"></i><a href="tel:00-700-6202">(+91) 00-700-6202.</a></li>
-								<li><i class="fa fa-envelope s_color" aria-hidden="true"></i><a href="#">Support&ConsultPress.com</a></li>
+								{{-- <li><i class="fa fa-map-marker s_color" aria-hidden="true"></i>Bilbao Street, Barcelona</li> --}}
+								<li><i class="fa fa-phone s_color" aria-hidden="true"></i><a href="tel:00-700-6202">0092-21-2772944</a></li>
+								<li><i class="fa fa-envelope s_color" aria-hidden="true"></i><a href="#">info@azizismail.com</a></li>
 							</ul>
 						</div> <!-- End of .item -->
 
@@ -218,6 +237,10 @@ Country*</label>
 				</div>
 			</div> <!-- End of .address_wrapper -->
    		</section>
+
+	<!-- SignUp For Newsletter _____________________ -->
+
+
 
 
 

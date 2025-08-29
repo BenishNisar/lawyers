@@ -39,14 +39,14 @@
     opacity: 0.7;
   }
   .ib-add {
-    background: #b10937;
+    background: #1d3a7d;
     color: #fff;
     border: 0;
     border-radius: 24px;
     padding: 10px 16px;
     text-decoration: none;
   }
-  .ib-add:hover { background: #8e0a2e; color: #fff; }
+  .ib-add:hover { background: #fc9928; color: #fff; }
 
   .ib-grid {
     --min: 260px;

@@ -36,7 +36,7 @@
 .service-tab .tab-content .tab-pane ul li:before,.single-sidebar.price-ranger .ui-slider-handle,.shop_single_page .product_details .product-review-tab .nav li.active a,
 .cart .shop_cart_table .icon_holder,.cart .cart_btn1,.cart .cart_btn2,.main_menu .navbar-default .nav>li .sub-menu,.main_menu .navbar-default .nav>li .sub-menu .sub-sub-menu,
 .req_callBackForm #error button,.req_callBackForm #success button {
-  background: #211a0f;
+  background: #1d3b7d;
 }
 
 
@@ -88,7 +88,7 @@ footer .footer_logo ul li a {
 	border-top-color:#211a0f;
 }
 footer {
-  border-top:8px solid #211a0f;
+  border-top:8px solid #fc9928;
 }
 footer .quick_links ul.border_fix {
   border-left:1px solid #211a0f;

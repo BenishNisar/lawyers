@@ -3,22 +3,48 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use Intervention\Image\Laravel\Facades\Image;
 use App\Models\Role;
 use App\Models\User;
 
 class UsersController extends Controller
 {
     //
-    public function index()
-    {
-        $users = User::join('role', 'users.role_id', '=', 'role.id')
-                     ->select('users.*', 'role.role_name')
-                     ->get();
+    // public function index()
+    // {
+    //     $users = User::join('role', 'users.role_id', '=', 'role.id')
+    //                  ->select('users.*', 'role.role_name')
+    //                  ->get();
 
-        return view('Dashboard.admin.users.index', compact('users'));
-    }
+    //     return view('Dashboard.admin.users.index', compact('users'));
+    // }
 
+public function index(Request $r)
+{
+    $q = trim($r->get('q',''));
 
+    $users = User::query()
+        ->leftJoin('role','users.role_id','=','role.id')
+        ->when($q, function($query) use ($q) {
+            $like = "%{$q}%";
+            $query->where(function($w) use ($like){
+                $w->where('users.firstname','like',$like)
+                  ->orWhere('users.lastname','like',$like)
+                  ->orWhere('users.email','like',$like)
+                  ->orWhere('users.city','like',$like)
+                  ->orWhere('users.country','like',$like)
+                  ->orWhere('role.role_name','like',$like);
+            });
+        })
+        ->select('users.*','role.role_name')
+        ->orderByDesc('users.id')
+        ->paginate(15)
+        ->withQueryString();
+
+    return view('Dashboard.admin.users.index', compact('users','q'));
+}
     public function add()
     {
     $roles = Role::all();
@@ -38,7 +64,9 @@ class UsersController extends Controller
             'zip_code' => 'required|string|max:10',
             'role_id' => 'required|integer',
             'organization' => 'required|string|max:255',
-            'profile_img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            // 'profile_img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'profile_img' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120', // 5MB
+
         ]);
 
         // ✅ Handle Profile Image Upload with default fallback
@@ -92,7 +120,9 @@ class UsersController extends Controller
             'zip_code' => 'required|string|max:10',
             'role_id' => 'required|integer',
             'organization' => 'required|string|max:255',
-            'profile_img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            // 'profile_img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'profile_img' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120', // 5MB
+
         ]);
 
         if ($request->filled('password')) {

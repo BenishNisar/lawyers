@@ -12,8 +12,20 @@
     }
     .search-input:focus { border-color:rgba(0,0,0,.35); }
 
-    .add-new-btn { background-color:#b10937; color:#fff; border:none; padding:10px 20px; border-radius:50px; cursor:pointer; transition:0.3s; }
-    .add-new-btn:hover { background-color:#86092b; color:#fff; }
+       .add-new-btn {
+    background-color:#1d3a7d ;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-new-btn:hover {
+    background-color: #fc9928;;
+    color: white;
+}
 
     /* extra: multi-select ka size clean */
     .search-multi { min-width:240px; height:38px; border-radius:50px; padding:6px 12px; }
@@ -40,10 +52,10 @@
             <input type="text" name="q" value="{{ $q }}" class="search-input" placeholder="Search title / year...">
 
             {{-- Multi-category select (compact) --}}
-          
+
 
             <button type="submit" class="add-new-btn">Filter</button>
-            <a href="{{ route('Dashboard.admin.downloads-mgmt.add') }}" class="add-new-btn" style="background:#6c757d;">Add New</a>
+            <a href="{{ route('Dashboard.admin.downloads-mgmt.add') }}" class="add-new-btn">Add New</a>
         </form>
     </div>
 

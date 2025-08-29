@@ -21,7 +21,7 @@
         <div class="page-breadcrumb p_color_bg">
         	<div class="container clear_fix">
         		<ul class="text-center">
-        			<li><a href="index.html">Home</a></li>
+        			<li><a href="{{ asset("/") }}">Home</a></li>
         			<li><i class="fa fa-caret-right" aria-hidden="true"></i></li>
         			<li>About Us</li>
         		</ul>
@@ -37,7 +37,7 @@
         		<div class="row">
         			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 pull-right about_us_main_content">
         				<div class="img_holder">
-        					<img src="images/about/1.jpg" alt="images" class="img-responsive">
+        					<img src="{{ asset("assets/images/home/about.png") }}" alt="images" class="img-responsive">
         					<div class="icon"><a href="https://www.youtube.com/embed/eAaP03Qs6cE?autoplay=1" class="fancy_video fancybox.iframe"><span class="ficon flaticon-play-button"></span></a></div>
         				</div> <!-- End of .img_holder -->
 
@@ -212,64 +212,121 @@
         			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 pull-left side_bar">
         				<div class="wrapper">
         					<!-- Page List -->
-        					<ul class="page_list">
-
+        					<ul class="page_list service_page_list">
         					<li><a href="{{ asset("/business-sectors") }}" class="tran3s">Business Sectors</a></li>
         						<li><a href="{{ asset("/administration") }}" class="tran3s">Administration</a></li>
         						<li><a href="{{ asset("/softwares") }}" class="tran3s">Softwares</a></li>
         						<li><a href="{{ asset("/clients") }}" class="tran3s">Clients</a></li>
         						<li><a href="{{ asset("/downloads") }}" class="tran3s">Downloads</a></li>
-        						<li><a href="{{ asset("/careers") }}" class="tran3s active">Jons & Careers</a></li>
+        						<li><a href="{{ asset("/careers") }}" class="tran3s active">Jobs & Careers</a></li>
         						<li><a href="{{ asset("/blogs") }}" class="tran3s">Blogs</a></li>
         					</ul> <!-- End of .page_list -->
 
-							<!-- Fun Facts -->
-        					<div class="fun_facts_wrapper">
-        						<!-- Single Fun Facts -->
-        						<div class="fun_facts_single_item clear_fix">
-									<div class="icon float_left"><span class="ficon flaticon-peopletwo"></span></div> <!-- End of .icon -->
-									<div class="text float_left">
-										<span class="timer" data-from="10" data-to="100" data-speed="5000" data-refresh-interval="50">0</span>
-										<p>Projects Completed</p>
-									</div> <!-- End of .text -->
-								</div> <!-- End of .fun_facts_single_item -->
+        					<!-- Our Brochures -->
+        					<div class="our_brochures">
+        						<div class="theme_title">
+									<h5>Our Brochures</h5>
+								</div>
+								<a href="{{ url("/download-center") }}" class="tran3s s_color_bg"><span class="p_color_bg tran3s"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span>Download .PDF</a>
+								<a href="{{ url("/download-center") }}" class="tran3s s_color_bg"><span class="p_color_bg tran3s"><i class="fa fa-file-word-o" aria-hidden="true"></i></span>Download .DOC</a>
+        					</div> <!-- End of .our_brochures -->
 
-								<!-- Single Fun Facts -->
-								<div class="fun_facts_single_item clear_fix">
-									<div class="icon float_left"><span class="ficon flaticon-screen"></span></div> <!-- End of .icon -->
-									<div class="text float_left">
-										<span class="timer" data-from="10" data-to="230" data-speed="5000" data-refresh-interval="50">0</span>
-										<p>Consultants</p>
-									</div> <!-- End of .text -->
-								</div> <!-- End of .fun_facts_single_item -->
+        					<div class="sidebar_testimonial testimonial sidebar_testimonial_style_two">
+   								<div class="theme_title">
+									<h5>Testimonials</h5>
+								</div>
+   								<div class="slider_wrapper">
+									<div class="owl-carousel owl-theme" id="testimonial-sidebar">
+										<!-- SLide  -->
+										<div class="item">
+											<div class="text p_color_bg">
+												<i>They have got my project on time with the competition with a highly skilled, well-organized and experienced</i>
+											</div> <!-- End of .text -->
+											<div class="author clear_fix">
+												<img src="{{asset('assets/images/home/testimonialone.jpg')}}" alt="Client Image" class="float_left border_round">
+												<div class="author_name float_left">
+													<h6 class="p_color">Mark Vilton <span>- Villo Ceo</span></h6>
+													<ul>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+													</ul>
+												</div> <!-- End of .author_name -->
+											</div> <!-- End of .author -->
+										</div>
 
-								<!-- Single Fun Facts -->
-								<div class="fun_facts_single_item clear_fix">
-									<div class="icon float_left"><span class="ficon flaticon-badge"></span></div> <!-- End of .icon -->
-									<div class="text float_left">
-										<span class="timer" data-from="10" data-to="90" data-speed="4500" data-refresh-interval="50">0</span>
-										<p>Awwards winning</p>
-									</div> <!-- End of .text -->
-								</div> <!-- End of .fun_facts_single_item -->
+
+										<!-- SLide  -->
+										<div class="item">
+											<div class="text p_color_bg">
+												<i>ConsultPress over 20 years of experience we’ll ensure you always get the best guidance. We serve clients at every</i>
+											</div> <!-- End of .text -->
+											<div class="author clear_fix">
+												<img src="{{asset('assets/images/home/test2.jpg')}}" alt="Client Image" class="float_left border_round">
+												<div class="author_name float_left">
+													<h6 class="p_color">Joseph<span>- Villo Ceo</span></h6>
+													<ul>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+													</ul>
+												</div> <!-- End of .author_name -->
+											</div> <!-- End of .author -->
+										</div>
 
 
-								<!-- Single Fun Facts -->
-								<div class="fun_facts_single_item clear_fix">
-									<div class="icon float_left"><span class="ficon flaticon-smile"></span></div> <!-- End of .icon -->
-									<div class="text float_left">
-										<span class="timer" data-from="1" data-to="100" data-speed="5000" data-refresh-interval="50">0</span><span>%</span>
-										<p>Satisfied clients</p>
-									</div> <!-- End of .text -->
-								</div> <!-- End of .fun_facts_single_item -->
+										<!-- SLide  -->
+										<div class="item">
+											<div class="text p_color_bg">
+												<i>They have got my project on time with the competition with a highly skilled, well-organized and experienced team</i>
+											</div> <!-- End of .text -->
+											<div class="author clear_fix">
+												<img src="{{asset('assets/images/home/test3.jpg')}}" alt="Client Image" class="float_left border_round">
+												<div class="author_name float_left">
+													<h6 class="p_color">Anderson<span>- Villo Ceo</span></h6>
+													<ul>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														<li><i class="fa fa-star" aria-hidden="true"></i></li>
+													</ul>
+												</div> <!-- End of .author_name -->
+											</div> <!-- End of .author -->
+										</div>
 
-        					</div> <!-- End of .fun_facts_wrapper -->
+									</div> <!-- End of .testimonial-carousel-content-box -->
+								</div> <!-- End of .slider_wrapper -->
+   							</div> <!-- End of .sidebar_testimonial -->
+
 
         					<!-- Business Enquiry -->
-        					<div class="business_enquiry">
+        					{{-- <div class="business_enquiry">
         						<h6>For Business Enquiry</h6>
         						<p>You can also send us an <a href="#" class="s_color">email</a> and we’ll get in touch shortly, or Troll Free Number <a href="#" class="p_color"> -(+91) <br> 00-700-6202.</a></p>
         						<span class="ficon flaticon-message"></span>
-        					</div> <!-- End of .business_enquiry -->
+        					</div> --}}
+                                                   <div class="business_enquiry">
+  <h6>For Business Enquiry</h6>
+  <p>
+    You can also send us an
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=info@azizismail.com&su=Business%20Enquiry%20from%20Website"
+      target="_blank"
+      rel="noopener"
+      class="s_color"
+    >email</a>
+    and we’ll get in touch shortly, or call
+    <a href="tel:+92212772944" class="p_color">+92 21 277 2944</a>.
+  </p>
+  <span class="ficon flaticon-message"></span>
+</div>
+
+                            <!-- End of .business_enquiry -->
 
         				</div> <!-- End of .wrapper -->
         			</div> <!-- End of .side_bar -->

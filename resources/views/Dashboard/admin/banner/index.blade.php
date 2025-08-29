@@ -10,8 +10,8 @@
 .table th,.table td{padding:10px 12px;font-size:14px;white-space:nowrap;text-align:left}
 .search-container{display:flex;align-items:center;gap:10px;margin-left:auto}
 .search-input{padding:10px;border:1px solid #ccc;border-radius:50px;width:250px;outline:none;font-size:14px;transition:.3s}
-.add-new-btn{background-color:#b10937;color:#fff;border:none;padding:10px 20px;border-radius:50px;cursor:pointer;transition:.3s;text-decoration:none}
-.add-new-btn:hover{background-color:#86092b;color:#fff}
+.add-new-btn{background-color:#1d3a7d;color:#fff;border:none;padding:10px 20px;border-radius:50px;cursor:pointer;transition:.3s;text-decoration:none}
+.add-new-btn:hover{background-color:#fc9928;color:#fff}
 @media (max-width:768px){.search-container{flex-direction:column;align-items:stretch;width:70%}
 .search-input{display:none}.add-new-btn{width:70%;text-align:center}}
 .actions{display:flex;justify-content:center;gap:10px}

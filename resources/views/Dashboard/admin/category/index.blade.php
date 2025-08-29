@@ -40,7 +40,7 @@
     }
 
 .add-new-btn {
-    background-color: #b10937;
+    background-color:#1d3a7d ;
     color: white;
     border: none;
     padding: 10px 20px;

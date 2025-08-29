@@ -11,7 +11,7 @@
      style="background: url('{{ asset($bannerImage) }}') no-repeat center; background-size: cover;">
   <div class="overlay">
     <div class="banner_tilte">
-      <h2>Careers</h2>
+      <h2>Business Sectors</h2>
       <span class="s_color_bg"></span>
     </div>
   </div>
@@ -23,11 +23,11 @@
         <div class="page-breadcrumb p_color_bg">
         	<div class="container clear_fix">
         		<ul class="text-center">
-        			<li><a href="index.html">Home</a></li>
+        			<li><a href="{{ asset("/") }}">Home</a></li>
         			<li><i class="fa fa-caret-right" aria-hidden="true"></i></li>
-        			<li><a href="about.html">About Us</a></li>
+        			<li><a href="{{ asset("/about") }}">About Us</a></li>
         			<li><i class="fa fa-caret-right" aria-hidden="true"></i></li>
-        			<li>Careers</li>
+        			<li>Business Sectors</li>
         		</ul>
         	</div>
         </div> <!-- End of .page-breadcrumb -->
@@ -41,11 +41,11 @@
         		<div class="row">
         			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 pull-right career_main_content">
         				<div class="img_holder">
-        					<img src="{{ asset("assets/images/home/business.jpg") }}" alt="images" class="img-responsive">
+        					<img src="{{ asset("assets/images/home/industries.png") }}" alt="images" class="img-responsive">
         					<div class="text">
-        						<h3 class="p_color">Industries We
+        						{{-- <h3 class="p_color">Industries We
 <br>Serve</h3>
-        						<a href="#" class="theme_button s_color_bg tran3s">Contact Now</a>
+        						<a href="#" class="theme_button s_color_bg tran3s">Contact Now</a> --}}
         					</div>
         				</div>
 
@@ -208,7 +208,7 @@
                 <li><span class="fa-li"><i class="fa fa-desktop"></i></span>Computer Parts And Accessories</li>
                 <li><span class="fa-li"><i class="fa fa-motorcycle"></i></span>Motorcycles</li>
                 <li><span class="fa-li"><i class="fa fa-tree"></i></span>Wood</li>
-<li><span class="fa-li"><i class="fa fa-cutlery"></i></span>Catering Services And Many More</li>
+<li><span class="fa-li"><i class="fas fa-utensils" ></i></span>Catering Services And Many More</li>
             </ul>
         </div>
     </div>
@@ -228,7 +228,7 @@
         						<li><a href="{{ asset("/softwares") }}" class="tran3s">Softwares</a></li>
         						<li><a href="{{ asset("/clients") }}" class="tran3s">Clients</a></li>
         						<li><a href="{{ asset("/downloads") }}" class="tran3s">Downloads</a></li>
-        						<li><a href="{{ asset("/careers") }}" class="tran3s active">Jons & Careers</a></li>
+        						<li><a href="{{ asset("/careers") }}" class="tran3s active">Jobs & Careers</a></li>
         						<li><a href="{{ asset("/blogs") }}" class="tran3s">Blogs</a></li>
         					</ul> <!-- End of .page_list -->
 
@@ -274,11 +274,29 @@
         					</div> <!-- End of .fun_facts_wrapper -->
 
         					<!-- Business Enquiry -->
-        					<div class="business_enquiry">
+        					{{-- <div class="business_enquiry">
         						<h6>For Business Enquiry</h6>
         						<p>You can also send us an <a href="#" class="s_color">email</a> and we’ll get in touch shortly, or Troll Free Number <a href="#" class="p_color"> -(+91) <br> 00-700-6202.</a></p>
         						<span class="ficon flaticon-message"></span>
-        					</div> <!-- End of .business_enquiry -->
+        					</div> --}}
+                            <div class="business_enquiry">
+  <h6>For Business Enquiry</h6>
+  <p>
+    You can also send us an
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=info@azizismail.com&su=Business%20Enquiry%20from%20Website"
+      target="_blank"
+      rel="noopener"
+      class="s_color"
+    >email</a>
+    and we’ll get in touch shortly, or call
+    <a href="tel:+92212772944" class="p_color">+92 21 277 2944</a>.
+  </p>
+  <span class="ficon flaticon-message"></span>
+</div>
+
+
+                            <!-- End of .business_enquiry -->
 
         				</div> <!-- End of .wrapper -->
         			</div> <!-- End of .side_bar -->
@@ -288,14 +306,13 @@
 
 
 
-
-        <!-- Request Quote footer _____________ -->
-        <div class="request_quote_footer s_color_bg">
-			<div class="container clear_fix">
-				<p class="float_left">ConsultPress over 20 years of experience we’ll ensure you always get the best guidance.</p>
-				<a href="#" class="theme_button p_color_bg float_right tran3s">Request Quote</a>
-			</div> <!-- End of .container -->
-		</div> <!-- End of .request_quote -->
+<!-- Request Quote footer -->
+<div class="request_quote_footer s_color_bg">
+  <div class="container clear_fix">
+    <p class="float_left">Aziz & Ismail Co. — Income, Sales & Tax advisors helping businesses stay compliant and grow.</p>
+    <a href="{{ url("contact") }}" class="theme_button p_color_bg s_color float_right tran3s">Contact Now</a>
+  </div>
+</div>
 
 
 

@@ -10,8 +10,12 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ asset('Dashboard_assets/img/logo.png') }}" rel="icon">
-  <link href="{{ asset('Dashboard_assets/img/logo.png') }}" rel="apple-touch-icon">
+  <link href="{{ asset('Dashboard_assets/img/azizlogo.png') }}" rel="icon">
+  <link href="{{ asset('Dashboard_assets/img/azizlogo.png') }}" rel="apple-touch-icon">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -136,6 +140,9 @@
   }
 
 
+
+
+
 </style>
 
 </head>
@@ -149,7 +156,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
         <a href="{{ url('/') }}" class="logo d-flex align-items-center">
-            <img  src="{{ asset('Dashboard_assets/img/logo.png') }}" alt="Logo">
+            <img  src="{{ asset('Dashboard_assets/img/azizlogo.png') }}" alt="Logo">
         </a>
 
         <i style="font-size:22px;" class="bi bi-list toggle-sidebar-btn"></i>
@@ -313,180 +320,125 @@
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar" >
 
-    <ul class="sidebar-nav" id="sidebar-nav" >
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-        <li  class="nav-item" >
-            <a  class="nav-link"  href="{{ asset("dashboard") }}">
-                <i class="fas fa-hard-hat"></i>
+  <!-- Dashboard -->
+  <li class="nav-item">
+    <a class="nav-link" href="{{ asset('dashboard') }}">
+      <i class="fa-solid fa-gauge fa-fw me-2"></i>
+      <span>Dashboard</span>
+    </a>
+  </li>
 
-              <span>Dashboard</span>
-            </a>
-          </li><!-- End Dashboard Nav -->
-          <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
-                <i  class="fas fa-users"></i>
-                <span>Users Manage</span>
-              <i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="users-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-              <li>
-                <a  href="{{ asset('users') }}">
-                  <i class="bi bi-circle"></i><span>Users </span>
-                </a>
-              </li>
-
-
-              <li>
-                <a href="{{ asset('roles') }}">
-                  <i class="bi bi-circle"></i><span>Role</span>
-                </a>
-              </li>
-
-
-
-
-
-            </ul>
-          </li>
-
-
-
-
-
-
-
-
-      <li class="nav-item" >
-        <a class="nav-link collapsed" data-bs-target="#articles-nav" data-bs-toggle="collapse" href="#">
-            <i class="fas fa-exclamation-triangle"></i>
-            <span>Articles</span><i class="bi bi-chevron-down ms-auto"></i>
+  <!-- Users -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#" aria-expanded="false">
+      <i class="fa-solid fa-users fa-fw me-2"></i>
+      <span>Users</span>
+      <i class="fa-solid fa-chevron-down ms-auto toggle-icon"></i>
+    </a>
+    <ul id="users-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="{{ asset('users') }}">
+          <i class="fa-regular fa-circle me-2"></i><span>All Users</span>
         </a>
-        <ul id="articles-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-          <li>
-            <a  href="{{ asset('/blog') }}">
-              <i class="bi bi-circle"></i><span >Blogs</span>
-            </a>
-          </li>
-          <li>
-            <a  href="{{ asset('/category') }}">
-              <i class="bi bi-circle"></i><span >Categories</span>
-            </a>
-          </li>
-
-
-        </ul>
-      </li><!-- End Components Nav -->
-
-
-
-
-           <li class="nav-item" >
-        <a class="nav-link collapsed" data-bs-target="#articlestwo-nav" data-bs-toggle="collapse" href="#">
-            <i class="fas fa-exclamation-triangle"></i>
-            <span>Home</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="articlestwo-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-          <li>
-            <a  href="{{ asset('/banner') }}">
-              <i class="bi bi-circle"></i><span >Banner</span>
-            </a>
-          </li>
-          <li>
-            <a  href="{{ asset('/inner_banner') }}">
-      <i class="bi bi-collection"></i><span>Inner Page Banners</span>
-            </a>
-          </li>
-
-
-        </ul>
-      </li><!-- End Components Nav -->
-
-
-     <li class="nav-item" >
-        <a class="nav-link collapsed" data-bs-target="#articlesfour-nav" data-bs-toggle="collapse" href="#">
-            <i class="fas fa-exclamation-triangle"></i>
-            <span>Services</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="articlesfour-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-          <li>
-            <a  href="{{ asset('/services-mgmt') }}">
-              <i class="bi bi-circle"></i><span >Services</span>
-            </a>
-          </li>
-
-
-        </ul>
       </li>
-      <!-- End Components Nav -->
-
-      {{-- <li class="nav-item" >
-        <a   class="nav-link collapsed" data-bs-target="#services-nav" data-bs-toggle="collapse" href="#">
-            <i style="font-size: 12px; font-weight:bolder; color:rgba(12, 12, 12, 0.829);" class="fas fa-exclamation-triangle"></i>
-            <span style="font-size: 12px; font-weight:bolder; color:rgba(12, 12, 12, 0.829);">Services</span><i class="bi bi-chevron-down ms-auto"></i>
+      <li>
+        <a href="{{ asset('roles') }}">
+          <i class="fa-solid fa-user-shield me-2"></i><span>Roles</span>
         </a>
-        <ul id="services-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-
-            <li>
-            <a  href="{{ asset('corporates') }}">
-              <i class="bi bi-circle"></i><span >Corporate</span>
-            </a>
-          </li>
-
-
-
-        </ul>
-      </li> --}}
-       <li class="nav-item" >
-        <a class="nav-link collapsed" data-bs-target="#articlesfive-nav" data-bs-toggle="collapse" href="#">
-            <i class="fas fa-exclamation-triangle"></i>
-            <span>Contacts</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="articlesfive-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-          <li>
-            <a  href="{{ asset('/contactus') }}">
-              <i class="bi bi-circle"></i><span >Contact</span>
-            </a>
-          </li>
-  <li>
-            <a  href="{{ asset('/contact-settings') }}">
-              <i class="bi bi-circle"></i><span >Contact Settings</span>
-            </a>
-          </li>
-
-        </ul>
       </li>
-    <li class="nav-item">
-            <a href="{{ asset('/downloads-mgmt') }}" class="nav-link collapsed" >
-                <i class="fas fa-phone-alt"></i>
-                <span>Downloads</span>
-            </a>
-        </li>
-          {{-- <li class="nav-item">
-            <a href="{{ asset('contactus') }}" class="nav-link collapsed" >
-                <i class="fas fa-phone-alt"></i>
-                <span>Contact</span>
-            </a>
-        </li> --}}
-
-        {{-- <li class="nav-item">
-            <a href="{{ asset('officedetails') }}" style="color:black" class="nav-link collapsed" >
-                <i class="fas fa-building" style="color:#b10937;"></i>
-
-                <span>Links Station - Office Details</span>
-            </a>
-        </li> --}}
-
-
-
-
-
-
-
-
-
-
-
     </ul>
+  </li>
+
+  <!-- Articles -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#articles-nav" data-bs-toggle="collapse" href="#" aria-expanded="false">
+      <i class="fa-solid fa-newspaper fa-fw me-2"></i>
+      <span>Articles</span>
+      <i class="fa-solid fa-chevron-down ms-auto toggle-icon"></i>
+    </a>
+    <ul id="articles-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="{{ asset('blog') }}">
+          <i class="fa-solid fa-blog me-2"></i><span>Blogs</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ asset('category') }}">
+          <i class="fa-solid fa-tags me-2"></i><span>Categories</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <!-- Home -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#home-nav" data-bs-toggle="collapse" href="#" aria-expanded="false">
+      <i class="fa-solid fa-house fa-fw me-2"></i>
+      <span>Home</span>
+      <i class="fa-solid fa-chevron-down ms-auto toggle-icon"></i>
+    </a>
+    <ul id="home-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="{{ asset('banner') }}">
+          <i class="fa-solid fa-image me-2"></i><span>Banner</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ asset('inner_banner') }}">
+          <i class="fa-solid fa-images me-2"></i><span>Inner Page Banners</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <!-- Services -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#services-nav" data-bs-toggle="collapse" href="#" aria-expanded="false">
+      <i class="fa-solid fa-briefcase fa-fw me-2"></i>
+      <span>Services</span>
+      <i class="fa-solid fa-chevron-down ms-auto toggle-icon"></i>
+    </a>
+    <ul id="services-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="{{ asset('services-mgmt') }}">
+          <i class="fa-regular fa-rectangle-list me-2"></i><span>Services</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <!-- Contacts -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#contacts-nav" data-bs-toggle="collapse" href="#" aria-expanded="false">
+      <i class="fa-solid fa-address-book fa-fw me-2"></i>
+      <span>Contacts</span>
+      <i class="fa-solid fa-chevron-down ms-auto toggle-icon"></i>
+    </a>
+    <ul id="contacts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="{{ asset('contactus') }}">
+          <i class="fa-solid fa-envelope me-2"></i><span>Contact</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ asset('contact-settings') }}">
+          <i class="fa-solid fa-gear me-2"></i><span>Contact Settings</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <!-- Downloads -->
+  <li class="nav-item">
+    <a href="{{ asset('downloads-mgmt') }}" class="nav-link collapsed">
+      <i class="fa-solid fa-download fa-fw me-2"></i>
+      <span>Downloads</span>
+    </a>
+  </li>
+
+</ul>
 
 </aside><!-- End Sidebar-->
 

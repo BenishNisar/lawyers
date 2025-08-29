@@ -1,10 +1,25 @@
 @extends('Layout.layouttwo')
-
 @section('AdminContent')
+<style>
+    .add-new-btn {
+    background-color:#1d3a7d ;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-new-btn:hover {
+    background-color: #fc9928;;
+    color: white;
+}
+</style>
 <div class="container-fluid mt-4">
   <div class="d-flex justify-content-between align-items-center">
     <h1 style="font-size:23px;font-weight:bolder;">Contact Settings</h1>
-    <a href="{{ route('Dashboard.admin.contact-settings.add') }}" class="btn btn-danger">Add New</a>
+    <a href="{{ route('Dashboard.admin.contact-settings.add') }}" class="btn add-new-btn">Add New</a>
   </div>
 
   @if(session('success'))
