@@ -15,7 +15,7 @@
 @media (max-width:768px){.search-container{flex-direction:column;align-items:stretch;width:70%}
 .search-input{display:none}.add-new-btn{width:70%;text-align:center}}
 .actions{display:flex;justify-content:center;gap:10px}
-.actions i{color:#86092b;cursor:pointer;transition:.2s}
+.actions i{color:#1d3a7d ;cursor:pointer;transition:.2s}
 .actions i:hover{transform:scale(1.08);color:gray}
 .banner-thumb{width:90px;height:56px;object-fit:cover;border:1px solid #ddd;border-radius:6px}
 </style>

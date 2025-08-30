@@ -504,6 +504,50 @@
 <div class="company_excellance" id="our-services">
   <div class="container">
 
+
+    <header class="excellence-intro ex-has-deco">
+  <!-- LEFT deco (already OK) -->
+  <svg class="ex-deco ex-left" viewBox="0 0 512 512" aria-hidden="true">
+    <g fill="currentColor"><g>
+      <path d="M228.449,387.406l0.796-6.329h-64.608v23.755h187.249v-23.755h-64.608l0.752,5.978c0.017,0.072,0.016,0.151,0.025,0.226l0.004,0.024c0.002,0.004,0,0.01,0.002,0.014c0.025,0.164,0.057,0.325,0.057,0.496c0,0.817-0.309,1.555-0.803,2.13v0.001c-0.156,0.18-0.326,0.343-0.517,0.484c-0.548,0.41-1.22,0.662-1.957,0.662c-0.006,0-0.012,0-0.019,0h-53.116c-0.237,0-0.472-0.026-0.7-0.076c-0.083-0.019-0.159-0.055-0.24-0.078c-0.142-0.044-0.286-0.081-0.42-0.143c-0.091-0.041-0.171-0.102-0.257-0.15c-0.116-0.066-0.234-0.125-0.342-0.203c-0.086-0.064-0.158-0.146-0.238-0.219c-0.088-0.08-0.183-0.151-0.263-0.241c-0.066-0.078-0.113-0.169-0.171-0.251c-0.072-0.103-0.151-0.2-0.211-0.31c-0.052-0.095-0.084-0.195-0.126-0.294c-0.049-0.116-0.105-0.229-0.141-0.349c-0.03-0.104-0.041-0.21-0.062-0.315c-0.023-0.123-0.053-0.244-0.063-0.369c-0.008-0.109,0.003-0.219,0.006-0.33C228.446,387.621,228.436,387.514,228.449,387.406z"/>
+      <polygon points="405.486,411.392 355.166,411.392 161.357,411.392 111.029,411.392 111.029,422.057 405.486,422.057"/>
+      <path d="M119.528,352.197c40.676,0,73.967-32.244,75.69-72.528h-26.556H43.838C45.561,319.953,78.853,352.197,119.528,352.197z M63.968,296.487c1.756-0.429,3.527,0.648,3.959,2.403c0.035,0.142,3.689,14.239,18.076,23.031c1.545,0.944,2.033,2.963,1.088,4.509c-0.618,1.012-1.697,1.57-2.802,1.57c-0.583,0-1.173-0.155-1.707-0.482C65.8,317.265,61.72,301.13,61.554,300.448C61.126,298.688,62.208,296.914,63.968,296.487z"/>
+      <path d="M234.148,131.306c0,13.31,10.807,24.138,24.09,24.138c13.31,0,24.138-10.828,24.138-24.138c0-13.309-10.828-24.136-24.138-24.136C244.955,107.169,234.148,117.997,234.148,131.306z"/>
+      <polygon points="119.511,154.416 74.583,273.109 163.923,273.109"/>
+      <path d="M235.541,384.535h19.503v-75.194c0-1.812,1.469-3.279,3.28-3.279c1.813,0,3.28,1.468,3.28,3.279v75.194h19.378l-0.98-6.228c-0.08-0.512-0.029-1.025,0.125-1.507L258.24,203.012l-21.846,173.786c0.155,0.482,0.208,0.997,0.127,1.51L235.541,384.535z"/>
+      <path d="M392.472,322.933c40.677,0,73.967-32.201,75.69-72.438h-26.517h-124.85C318.498,290.731,351.793,322.933,392.472,322.933z"/>
+      <polygon points="347.564,243.935 436.903,243.935 392.455,125.322"/>
+      <path d="M91.611,151.373l118.115-12.638c3.579,23.357,23.807,41.303,48.146,41.303c26.885,0,48.757-21.852,48.757-48.713l85.792-9.134l31.103-3.377c1.801-0.196,3.103-1.814,2.906-3.615s-1.815-3.11-3.614-2.907l-27.777,3.017V77.44c0-1.812-1.467-3.28-3.279-3.28c-1.811,0-3.279,1.469-3.279,3.28v35.611l-83.118,8.849c-3.589-18.254-17.413-32.879-35.236-37.646V62.501c0-6.897-5.651-12.509-12.6-12.509c-6.921,0-12.551,5.611-12.551,12.509v21.743c-20.793,5.551-36.158,24.542-36.158,47.062l-86.743,9.281V105.19c0-1.812-1.468-3.28-3.28-3.28c-1.811,0-3.28,1.468-3.28,3.28v35.543l-24.97,2.672c-1.801,0.192-3.105,1.808-2.912,3.61C88.534,150.124,89.957,151.373,91.611,151.373z"/>
+      <path d="M88.889,438.842h244.426c1.812,0,3.279-1.469,3.279-3.28c0-1.811-1.468-3.279-3.279-3.279H88.889c-1.811,0-3.279,1.469-3.279,3.279C85.609,437.374,87.078,438.842,88.889,438.842z"/>
+      <path d="M409.239,455.447h-189.24c-1.812,0-3.28,1.469-3.28,3.28s1.468,3.28,3.28,3.28h189.24c1.81,0,3.28-1.469,3.28-3.28S411.049,455.447,409.239,455.447z"/>
+      <path d="M452.254,455.447H428.57c-1.811,0-3.279,1.469-3.279,3.28s1.469,3.28,3.279,3.28h23.684c1.811,0,3.279-1.469,3.279-3.28S454.064,455.447,452.254,455.447z"/>
+      <path d="M138.802,455.011H49.131c-1.812,0-3.28,1.469-3.28,3.279c0,1.812,1.468,3.28,3.28,3.28h89.671c1.812,0,3.28-1.469,3.28-3.28C142.082,456.479,140.614,455.011,138.802,455.011z"/>
+    </g></g>
+  </svg>
+
+  <!-- RIGHT deco (FULL paths — paste as-is) -->
+  <svg class="ex-deco ex-right" viewBox="0 0 512 512" aria-hidden="true">
+    <g fill="currentColor"><g>
+      <path d="M228.449,387.406l0.796-6.329h-64.608v23.755h187.249v-23.755h-64.608l0.752,5.978c0.017,0.072,0.016,0.151,0.025,0.226l0.004,0.024c0.002,0.004,0,0.01,0.002,0.014c0.025,0.164,0.057,0.325,0.057,0.496c0,0.817-0.309,1.555-0.803,2.13v0.001c-0.156,0.18-0.326,0.343-0.517,0.484c-0.548,0.41-1.22,0.662-1.957,0.662c-0.006,0-0.012,0-0.019,0h-53.116c-0.237,0-0.472-0.026-0.7-0.076c-0.083-0.019-0.159-0.055-0.24-0.078c-0.142-0.044-0.286-0.081-0.42-0.143c-0.091-0.041-0.171-0.102-0.257-0.15c-0.116-0.066-0.234-0.125-0.342-0.203c-0.086-0.064-0.158-0.146-0.238-0.219c-0.088-0.08-0.183-0.151-0.263-0.241c-0.066-0.078-0.113-0.169-0.171-0.251c-0.072-0.103-0.151-0.2-0.211-0.31c-0.052-0.095-0.084-0.195-0.126-0.294c-0.049-0.116-0.105-0.229-0.141-0.349c-0.03-0.104-0.041-0.21-0.062-0.315c-0.023-0.123-0.053-0.244-0.063-0.369c-0.008-0.109,0.003-0.219,0.006-0.33C228.446,387.621,228.436,387.514,228.449,387.406z"/>
+      <polygon points="405.486,411.392 355.166,411.392 161.357,411.392 111.029,411.392 111.029,422.057 405.486,422.057"/>
+      <path d="M119.528,352.197c40.676,0,73.967-32.244,75.69-72.528h-26.556H43.838C45.561,319.953,78.853,352.197,119.528,352.197z M63.968,296.487c1.756-0.429,3.527,0.648,3.959,2.403c0.035,0.142,3.689,14.239,18.076,23.031c1.545,0.944,2.033,2.963,1.088,4.509c-0.618,1.012-1.697,1.57-2.802,1.57c-0.583,0-1.173-0.155-1.707-0.482C65.8,317.265,61.72,301.13,61.554,300.448C61.126,298.688,62.208,296.914,63.968,296.487z"/>
+      <path d="M234.148,131.306c0,13.31,10.807,24.138,24.09,24.138c13.31,0,24.138-10.828,24.138-24.138c0-13.309-10.828-24.136-24.138-24.136C244.955,107.169,234.148,117.997,234.148,131.306z"/>
+      <polygon points="119.511,154.416 74.583,273.109 163.923,273.109"/>
+      <path d="M235.541,384.535h19.503v-75.194c0-1.812,1.469-3.279,3.28-3.279c1.813,0,3.28,1.468,3.28,3.279v75.194h19.378l-0.98-6.228c-0.08-0.512-0.029-1.025,0.125-1.507L258.24,203.012l-21.846,173.786c0.155,0.482,0.208,0.997,0.127,1.51L235.541,384.535z"/>
+      <path d="M392.472,322.933c40.677,0,73.967-32.201,75.69-72.438h-26.517h-124.85C318.498,290.731,351.793,322.933,392.472,322.933z"/>
+      <polygon points="347.564,243.935 436.903,243.935 392.455,125.322"/>
+      <path d="M91.611,151.373l118.115-12.638c3.579,23.357,23.807,41.303,48.146,41.303c26.885,0,48.757-21.852,48.757-48.713l85.792-9.134l31.103-3.377c1.801-0.196,3.103-1.814,2.906-3.615s-1.815-3.11-3.614-2.907l-27.777,3.017V77.44c0-1.812-1.467-3.28-3.279-3.28c-1.811,0-3.279,1.469-3.279,3.28v35.611l-83.118,8.849c-3.589-18.254-17.413-32.879-35.236-37.646V62.501c0-6.897-5.651-12.509-12.6-12.509c-6.921,0-12.551,5.611-12.551,12.509v21.743c-20.793,5.551-36.158,24.542-36.158,47.062l-86.743,9.281V105.19c0-1.812-1.468-3.28-3.28-3.28c-1.811,0-3.28,1.468-3.28,3.28v35.543l-24.97,2.672c-1.801,0.192-3.105,1.808-2.912,3.61C88.534,150.124,89.957,151.373,91.611,151.373z"/>
+      <path d="M88.889,438.842h244.426c1.812,0,3.279-1.469,3.279-3.28c0-1.811-1.468-3.279-3.279-3.279H88.889c-1.811,0-3.279,1.469-3.279,3.279C85.609,437.374,87.078,438.842,88.889,438.842z"/>
+      <path d="M409.239,455.447h-189.24c-1.812,0-3.28,1.469-3.28,3.28s1.468,3.28,3.28,3.28h189.24c1.81,0,3.28-1.469,3.28-3.28S411.049,455.447,409.239,455.447z"/>
+      <path d="M452.254,455.447H428.57c-1.811,0-3.279,1.469-3.279,3.28s1.469,3.28,3.279,3.28h23.684c1.811,0,3.279-1.469,3.279-3.28S454.064,455.447,452.254,455.447z"/>
+      <path d="M138.802,455.011H49.131c-1.812,0-3.28,1.469-3.28,3.279c0,1.812,1.468,3.28,3.28,3.28h89.671c1.812,0,3.28-1.469,3.28-3.28C142.082,456.479,140.614,455.011,138.802,455.011z"/>
+    </g></g>
+  </svg>
+
+  <!-- Text content -->
+
+</header>
+
     <!-- Section intro (new) -->
     <header class="excellence-intro">
       <p class="ex-eyebrow">What we do</p>
@@ -566,19 +610,26 @@
 		<div class="about_testimonial">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 about_ConsultPress">
-						<div class="theme_title">
-							<h3>Introduction</h3>
-						</div>
-					<p>
-The Firm of Income Tax and Sales Tax Lawyers was established in 1975, rendering professional services to business class as well for Salaried Personals. Since 1975 it is working in the present name & style. The Firm is headed by MR. ABDUL AZIZ ISMAIL, Senior Advocate High Court of Sindh. The team consists of professional staffs that is highly specialized in their respective fields and equipped with professional ethics.</p>
-                    </div> <!-- End of .about_ConsultPress -->
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 about_ConsultPress">
+  <div class="theme_title">
+    <h3>Testimonials</h3>
+  </div>
+  <p>
+    Our clients’ words are the clearest proof of our work. From Income Tax returns to Sales Tax (FBR/SRB)
+    monthly filings, e-invoicing, audits, and appeals, their feedback highlights on-time compliance,
+    reduced penalties, faster refunds, and smooth resolution of notices.
+  </p>
+  <p>
+    Every review comes from a real client, shown with their name &amp; role for full transparency—so you can
+    evaluate results, not just promises.
+  </p>
+</div> <!-- End of .about_ConsultPress -->
 
 					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 testimonial">
 
-						<div class="theme_title">
-							<h3>Testimonials</h3>
-						</div>
+						 <div class="theme_title">
+							{{-- <h3>Testimonials</h3> --}}
+						 </div>
 						<!-- __________________ testimonial Slider ____________ -->
 
 						<div class="slider_wrapper">
@@ -693,9 +744,63 @@ The Firm of Income Tax and Sales Tax Lawyers was established in 1975, rendering 
 
 
 
+
+
+
+        <!-- Firm Highlights & Quick Consultation (NEW, col-lg-12 layout) -->
+<!-- Super UI: Navy bg + 4 left / 4 right yellow hammers (facing center) -->
+<section class="azc-section azc-hammer-sky" id="why-us">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-12">
+        <div class="azc-hammer-wrap">
+          <div class="azc-panel" aria-hidden="true"></div>
+<!-- Centered card inside the glass panel -->
+<div class="azc-center-grid">
+  <article class="azc-intro-card">
+    <h3>Introduction</h3>
+    <p>
+      The Firm of Income Tax and Sales Tax Lawyers was established in 1975, rendering professional
+      services to business class as well for Salaried Personals. Since 1975 it is working in the present
+      name &amp; style. The Firm is headed by MR. ABDUL AZIZ ISMAIL, Senior Advocate High Court of Sindh.
+      The team consists of professional staffs that is highly specialized in their respective fields and
+      equipped with professional ethics.
+    </p>
+  </article>
+</div>
+
+          <!-- Reusable hammer symbol -->
+          <svg class="azc-defs" aria-hidden="true">
+            <symbol id="azc-hammer-icon" viewBox="0 0 17 17">
+              <path fill="currentColor"
+                d="M14.44,7.389 L9.662,2.61 L10.232,2.041 L9.315,1.122 L5.068,5.367 L5.988,6.285 L6.518,5.755 L8.473,7.709 L-0.062,16.244 L0.768,17.073 L9.301,8.539 L11.295,10.532 L10.766,11.063 L11.684,11.98 L15.938,7.727 L15.021,6.809 L14.44,7.389 Z"/>
+            </symbol>
+          </svg>
+
+          <!-- LEFT cluster (4) — facing RIGHT (towards center) -->
+          <svg class="azc-hammer-sm L1 face-right"><use href="#azc-hammer-icon"/></svg>
+          <svg class="azc-hammer-sm L2 face-right"><use href="#azc-hammer-icon"/></svg>
+          <svg class="azc-hammer-sm L3 face-right"><use href="#azc-hammer-icon"/></svg>
+          <svg class="azc-hammer-sm L4 face-right"><use href="#azc-hammer-icon"/></svg>
+
+          <!-- RIGHT cluster (4) — facing LEFT (towards center) -->
+          <svg class="azc-hammer-sm R1 face-left"><use href="#azc-hammer-icon"/></svg>
+          <svg class="azc-hammer-sm R2 face-left"><use href="#azc-hammer-icon"/></svg>
+          <svg class="azc-hammer-sm R3 face-left"><use href="#azc-hammer-icon"/></svg>
+          <svg class="azc-hammer-sm R4 face-left"><use href="#azc-hammer-icon"/></svg>
+
+          <!-- yahan apna content rakhna ho to add kar sakte ho -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 		<!-- What Makes us Special _________________________ -->
 
-		<div class="makesUs_special" style="background:#0F2742 url('{{ asset('assets/images/home/lawone.jpg') }}') center/cover no-repeat;">
+		{{-- <div class="makesUs_special" style="background:#0F2742 url('{{ asset('assets/images/home/lawone.jpg') }}') center/cover no-repeat;">
 			<div class="overlay">
 				<div class="container">
 					<div class="theme_title">
@@ -754,7 +859,46 @@ The Firm of Income Tax and Sales Tax Lawyers was established in 1975, rendering 
 					</div> <!-- End of .row -->
 				</div> <!-- End of .container -->
 			</div> <!-- End of .overlay -->
-		</div> <!-- End of .makesUs_special -->
+		</div> --}}
+
+         <section class="stats-section">
+        <div class="stats-overlay">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What Makes Us Special?</h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i class="fas fa-tasks stat-icon"></i>
+                        <span class="stat-number" data-count="100">0</span>
+                        <div class="stat-text">Projects Completed</div>
+                    </div>
+
+                    <div class="stat-item">
+                        <i class="fas fa-users stat-icon"></i>
+                        <span class="stat-number" data-count="230">0</span>
+                        <div class="stat-text">Consultants</div>
+                    </div>
+
+                    <div class="stat-item">
+                        <i class="fas fa-trophy stat-icon"></i>
+                        <span class="stat-number" data-count="90">0</span>
+                        <div class="stat-text">Awards Winning</div>
+                    </div>
+
+                    <div class="stat-item">
+                        <i class="fas fa-smile stat-icon"></i>
+                        <span class="stat-number" data-count="100">0</span>
+                        <div class="stat-text">Satisfied Clients</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- End of .makesUs_special -->
 
 
 
@@ -777,7 +921,7 @@ The Firm of Income Tax and Sales Tax Lawyers was established in 1975, rendering 
 							<div class="text float_left">
 								{{-- <h5 class="tran3s">Income Sales Tax Experts</h5>
             <p class="tran3s">FBR Income Tax FBR/SRB Sales Tax registrations, returns, planning.</p> --}}
-            <h5 class="tran3s">Income Sales Tax Experts Advisors</h5>
+            <h5 class="tran3s">Income Sales Tax </h5>
 <p class="tran3s">FBR Income Tax FBR/SRB Sales Tax registrations, returns, planning.</p>
 
 							</div> <!-- End of .text -->
@@ -969,7 +1113,7 @@ The Firm of Income Tax and Sales Tax Lawyers was established in 1975, rendering 
 <div class="faqAndNews">
   <div class="container">
        <div class="latest_news latest_news--grid">
-          <div class="theme_title mb-4">
+          <div class="theme_title_center mb-4">
             <h3>Latest News</h3>
           </div>
     <div class="row">

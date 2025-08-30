@@ -112,7 +112,7 @@
         <!-- Submit and cancel Buttons -->
         <div class="mb-3 text-end">
             <a href="{{ url('users') }}" class="btn btn-secondary">Cancel</a>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" style="background-color: #1d3a7d ;color:white;" class="btn">Save</button>
         </div>
 
     </form>

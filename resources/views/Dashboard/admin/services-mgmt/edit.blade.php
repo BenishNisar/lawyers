@@ -77,7 +77,7 @@
 
         <div class="text-end mt-3">
           <a href="{{ route('Dashboard.admin.services-mgmt.index') }}" class="btn btn-secondary">Back</a>
-          <button class="btn btn-danger">Update</button>
+          <button class="btn" style="background-color: #1d3a7d;color:white;">Update</button>
         </div>
       </form>
     </div>

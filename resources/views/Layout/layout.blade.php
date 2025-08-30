@@ -15,12 +15,14 @@
 {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfZ6P35JfYx1pU8tR+6v3vB0s6H5c0vQyB+99lB3cD9Jm0sYF2T3Z0f8Xk3O3QvGvG0B4v8F4YkO5N2wC2RZrA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
 <!-- Font Awesome 5.15.4 (Free) + v4 shims -->
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ6v0u7yZXs6F8rh7Lo2P7Bpn6k0UJkljvGZqxx5v1rUJk5Sbzf9G7QFGHpX" crossorigin="anonymous"> --}}
+{{-- google --}}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/v4-shims.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<link rel="shortcut icon" href="{{ asset("assets/images/logo/azizlogo.png") }}" type="image/x-icon">
 		<!-- Favicon -->
-		<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/images/fav-icon/apple-icon-57x57.png') }}">
+		{{-- <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/images/fav-icon/apple-icon-57x57.png') }}">
 		<link rel="apple-touch-icon" sizes="60x60" href="{{ asset('assets/images/fav-icon/apple-icon-60x60.png') }}">
 		<link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/images/fav-icon/apple-icon-72x72.png') }}">
 		<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/images/fav-icon/apple-icon-76x76.png') }}">
@@ -32,7 +34,7 @@
 		<link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('assets/images/fav-icon/android-icon-192x192.png') }}">
 		<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/fav-icon/favicon-32x32.png') }}">
 		<link rel="icon" type="image/png" sizes="96x96" href="{{ asset('assets/images/fav-icon/favicon-96x96.png') }}">
-		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/fav-icon/favicon-16x16.png') }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/fav-icon/favicon-16x16.png') }}"> --}}
 
 
 
@@ -54,6 +56,13 @@
 	</head>
 	<body class="home">
 
+
+        <div id="siteLoader">
+    <div class="gavel-wrapper">
+      <img src="{{ asset("assets/images/logo/lawhammer.svg") }}" class="hammer" alt="Hammer" />
+      <img src="{{ asset("assets/images/logo/lawone.svg") }}" class="plate" alt="Plate" />
+    </div>
+    </div>
 		<div class="page_wrapper">
 
 		<!--[if lt IE 8]>
@@ -151,19 +160,17 @@
 	        				{{-- <li><i class="fa fa-map-marker s_color" aria-hidden="true"></i><a href="#">Email</a></li>
 	        				<li><i class="fa fa-phone s_color" aria-hidden="true"></i><a href="#">Contact Us! 0092-21-2772944-5, 2721357, 2721359, 2750546-7 </a></li> --}}
 
-@php
+{{-- @php
   $contact = cache()->remember('contact_settings.first', 1800, fn () => \App\Models\ContactSetting::first());
 
   $emails = collect(is_array($contact->emails ?? null) ? $contact->emails : json_decode($contact->emails ?? '[]', true))
             ->map(fn($v)=>trim(trim((string)$v), " ,;"))->filter()->values();
 
-  $phones = collect(is_array($contact->phones ?? null) ? $contact->phones : json_decode($contact->phones ?? '[]', true))
-            ->map(fn($v)=>trim(trim((string)$v), " ,;"))->filter()->values();
+
 
   $telHref = fn(string $p) => preg_replace('/[^0-9+]/','', $p);
 @endphp
 
-{{-- ✅ Email item (use envelope icon) --}}
 <li>
   <i class="fas fa-envelope s_color" aria-hidden="true"></i>
   @if($emails->isNotEmpty())
@@ -171,10 +178,25 @@
   @else
     <a href="#">Email</a>
   @endif
+</li> --}}
+
+
+
+{{-- ✅ Email item (use envelope icon) --}}
+{{-- Static Email item --}}
+{{-- <li>
+  <i class="fas fa-envelope s_color" aria-hidden="true"></i>
+  <a href="mailto:info@azizismail.com">info@azizismail.com</a> <!-- Static email address -->
+</li> --}}
+
+<li>
+  <i class="fas fa-envelope s_color" aria-hidden="true"></i>
+  <a href="mailto:info@azizismail.com">info@azizismail.com</a> <!-- Static email address -->
 </li>
 
+
 {{-- Phone item --}}
-<li>
+{{-- <li>
   <i class="fas fa-phone-alt s_color" aria-hidden="true"></i>
   @if($phones->isNotEmpty())
     @foreach($phones as $i => $ph)
@@ -183,7 +205,7 @@
   @else
     <a href="#">000-0000000</a>
   @endif
-</li>
+</li> --}}
 
                             {{-- <li><i class="fa fa-clock-o s_color" aria-hidden="true"></i><a href="#"> Mon to Sat : 8.00 - 18.00</a></li> --}}
 	        			</ul>
@@ -194,7 +216,7 @@
 	        				<li><a href="#" class="tran3s" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 	        				<li><a href="#" class="tran3s" title="Goolge-Plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
 	        			</ul>
-
+{{--
 	        			<div id="polyglotLanguageSwitcher">
 							<form action="#">
 								<select id="polyglot-language-options">
@@ -205,8 +227,10 @@
 									<option id="es" value="es">Spanish</option>
 								</select>
 							</form>
-						</div> <!-- End #polyglotLanguageSwitcher -->
-	        		</div> <!-- End of .header_right -->
+						</div>  --}}
+	        		</div>
+
+                    <!-- End of .header_right -->
         		</div>  <!-- End of .row -->
         	</div> <!-- End of .container -->
         </header> <!-- End of header -->
@@ -218,10 +242,10 @@
 <!-- DESKTOP NAVBAR -->
 <div class="main_menu only-desktop">
   <div class="container">
-    {{-- <a href="{{ asset('/') }}" class="logo-link" title="Home" aria-label="Home">
+<a href="{{ asset('/') }}" class="logo-link" title="Home" aria-label="Home">
       <img class="logo-img" src="{{ asset('assets/images/logo/azizlogo.png') }}"  alt="Aziz Law Logo">
-    </a> --}}
-    <a class="navbar-brand logo-link" href="{{ asset('/') }}" aria-label="Home">
+    </a>
+    {{-- <a class="navbar-brand logo-link" href="{{ asset('/') }}" aria-label="Home">
   <picture>
     <!-- Mobile: compact logo (tagline ke bina) -->
     <source media="(max-width: 991px)"
@@ -232,10 +256,10 @@
          src="{{ asset('assets/images/logo/azizlogo.png') }}"
          srcset="{{ asset('assets/images/logo/azizlogo@2x.png') }} 2x,
                  {{ asset('assets/images/logo/azizlogo@3x.png') }} 3x"
-         width="220" height="44"
+         width="100" height="10"
          alt="Aziz Ismail &amp; Co.">
   </picture>
-</a>
+</a> --}}
 
 
     <nav class="navbar navbar-default" >
@@ -253,10 +277,10 @@
             </ul>
           </li>
           <li><a href="{{ route('Home.business-sectors') }}">Business Sectors</a></li>
-          <li><a href="{{ asset('/administration') }}">Administration</a></li>
-          <li><a href="{{ asset('/softwares') }}">Softwares</a></li>
-          <li><a href="{{ asset('/clients') }}">Clients</a></li>
-          <li><a href="{{ route('Home.downloads') }}">Downloads</a></li>
+          {{-- <li><a href="{{ asset('/administration') }}">Administration</a></li> --}}
+          {{-- <li><a href="{{ asset('/softwares') }}">Softwares</a></li> --}}
+          {{-- <li><a href="{{ asset('/clients') }}">Clients</a></li> --}}
+          {{-- <li><a href="{{ route('Home.downloads') }}">Downloads</a></li> --}}
           <li><a href="{{ asset('/careers') }}">Jobs & Career</a></li>
           <li><a href="{{ asset('/blogs') }}">Blogs</a></li>
           <li><a href="{{ asset('/about') }}">About Us</a></li>
@@ -423,7 +447,7 @@
 
           <!-- About -->
           <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 footer_logo" itemscope itemtype="https://schema.org/LegalService">
-            <a href="{{ url('/') }}"><img style="width:130px;" src="{{ asset('assets/images/logo/azizlogo.png') }}" alt="Aziz Ismail &amp; Co. logo" itemprop="logo"></a>
+            <a href="{{ url('/') }}"><img style="width:130px;" src="{{ asset('assets/images/logo/footerlogo.png') }}" alt="Aziz Ismail &amp; Co. logo" itemprop="logo"></a>
             <p>
               <strong itemprop="name">Aziz Ismail &amp; Co.</strong> — The Firm of Income Tax &amp; Sales Tax Lawyers (est. 1975).
               We represent businesses and salaried individuals in <em>Income Tax, Sales Tax, Corporate/SECP compliance</em> and <em>Intellectual Property</em>.
@@ -442,14 +466,14 @@
           <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 quick_links">
             <div class="theme_title"><h4>Practice Areas</h4></div>
             <ul class="float_left">
-              <li><a href="{{ url('/services/income-tax') }}" class="tran3s">Income Tax</a></li>
-              <li><a href="{{ url('/services/sales-tax') }}" class="tran3s">Sales Tax</a></li>
-              <li><a href="{{ url('/services/corporate') }}" class="tran3s">Company Law / SECP</a></li>
-              <li><a href="{{ url('/services/ip/copyrights') }}" class="tran3s">Copyrights</a></li>
-              <li><a href="{{ url('/services/ip/trademarks') }}" class="tran3s">Trademarks</a></li>
-              <li><a href="{{ url('/services/litigation') }}" class="tran3s">Appeals &amp; Litigation</a></li>
-              <li><a href="{{ url('/services/compliance') }}" class="tran3s">Tax Audit &amp; Compliance</a></li>
-              <li><a href="{{ url('/services/advisory') }}" class="tran3s">Advisory &amp; Planning</a></li>
+              <li><a href="{{ route('Home.business-sectors') }}" class="tran3s">Business Sectors</a></li>
+              <li><a href="{{ url('/administration') }}" class="tran3s">Administration </a></li>
+              <li><a href="{{ url('/softwares') }}" class="tran3s">Softwares</a></li>
+              <li><a href="{{ url('/clients') }}" class="tran3s">Clients</a></li>
+              <li><a href="{{ route("Home.downloads") }}" class="tran3s">Downloads</a></li>
+              <li><a href="{{ url('careers') }}" class="tran3s">Jobs & Careers</a></li>
+              <li><a href="{{ url('/blogs') }}" class="tran3s">Blog</a></li>
+              {{-- <li><a href="{{ url('/services/advisory') }}" class="tran3s">Advisory &amp; Planning</a></li> --}}
             </ul>
             <div class="clear_fix"></div>
           </div>
@@ -462,9 +486,9 @@
               <li><a href="{{ url('/') }}" class="tran3s">Home</a></li>
               <li><a href="{{ url('/about') }}" class="tran3s">About the Firm</a></li>
               <li><a href="{{ url('/services') }}" class="tran3s">Services</a></li>
-              <li><a href="{{ url('/clients') }}" class="tran3s">Clients</a></li>
-              <li><a href="{{ url('/downloads') }}" class="tran3s">Downloads</a></li>
-              <li><a href="{{ url('/jobs') }}" class="tran3s">Jobs &amp; Career</a></li>
+              {{-- <li><a href="{{ url('/clients') }}" class="tran3s">Clients</a></li> --}}
+              {{-- <li><a href="{{ route("Home.downloads") }}" class="tran3s">Downloads</a></li> --}}
+              {{-- <li><a href="{{ url('/jobs') }}" class="tran3s">Jobs &amp; Career</a></li> --}}
               <li><a href="{{ url('/contact') }}" class="tran3s">Contact</a></li>
             </ul>
             <div class="clear_fix"></div>
@@ -547,7 +571,7 @@
       </div> <!-- End of .container -->
     </div> <!-- End of .main_footer -->
 
-    <div class="bottom_footer">
+    {{-- <div class="bottom_footer">
       <div class="container">
         <p class="float_left font_fix">
           &copy; {{ date('Y') }} <strong>Aziz Ismail &amp; Co.</strong> All rights reserved.
@@ -561,7 +585,27 @@
         </ul>
         <div class="clear_fix"></div>
       </div>
-    </div> <!-- End of .bottom_footer -->
+    </div> --}}
+    <div class="bottom_footer">
+  <div class="container">
+    <p class="float_left font_fix">
+      &copy; {{ date('Y') }} <strong>Aziz Ismail &amp; Co.</strong> All rights reserved.
+      {{-- <span class="muted">Information on this site is for general guidance only and does not constitute legal advice.</span> --}}
+      <!-- Add Powered by Web Octane link -->
+      <span>Powered by <a href="https://weboctane.tech/" target="_blank" title="Web Octane">Web Octane</a></span>
+    </p>
+    <ul class="float_right">
+      <li><a href="#" class="tran3s" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+      <li><a href="#" class="tran3s" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+      <li><a href="#" class="tran3s" title="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+      <li><a href="#" class="tran3s" title="YouTube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+    </ul>
+    <div class="clear_fix"></div>
+  </div>
+</div>
+
+    <!-- End of .bottom_footer -->
+
   </div> <!-- End of .overlay -->
 </footer>
 
@@ -576,7 +620,7 @@
 <!-- WhatsApp Widget -->
 <div id="wa-widget"
      class="wa-widget"
-     data-wa-number="03177638152"
+     data-wa-number="0335 3456444"
      data-country-code="92"
      data-text="Hello 👋 I need legal assistance regarding {{ request()->path() }}.">
 
@@ -1360,4 +1404,107 @@ $(function(){
 
 </script>
 
+{{-- HAMMER --}}
+<script>
+(function () {
+  const wrap = document.querySelector('#why-us .azc-hammer-wrap');
+  if (!wrap) return;
+
+  function hitOnce() {
+    // restart trick: remove -> reflow -> add
+    wrap.classList.remove('hit-now');
+    // force reflow so animation restarts every time
+    void wrap.offsetWidth;
+    wrap.classList.add('hit-now');
+    // cleanup after hit so next trigger works
+    setTimeout(()=>wrap.classList.remove('hit-now'), 1100);
+  }
+
+  // Expose manual trigger (console ya click se):
+  window.azcHammerHit = hitOnce;
+
+  // Repeat while visible
+  let timer = null;
+  function startLoop(){ if (timer) return; hitOnce(); timer = setInterval(hitOnce, 5000); }
+  function stopLoop(){ if (!timer) return; clearInterval(timer); timer = null; }
+
+  // Run without reload requirement: if already visible OR jab viewport me aaye
+  const inViewNow = () => {
+    const r = wrap.getBoundingClientRect();
+    return r.top < innerHeight * 0.8 && r.bottom > innerHeight * 0.2;
+  };
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => e.isIntersecting ? startLoop() : stopLoop());
+    }, { threshold: 0.25 });
+    io.observe(wrap);
+  } else {
+    // Fallback
+    startLoop();
+  }
+
+  // agar abhi screen par hai to turant chalao (no reload needed)
+  if (inViewNow()) startLoop();
+
+  // Optional: debug click to replay instantly on the card/panel
+  // document.querySelector('.azc-intro-card')?.addEventListener('click', hitOnce);
+})();
+</script>
+ <script>
+        // Counter animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 2000; // The lower the slower
+
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText;
+
+                    // Lower value to make counting faster
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+
+                // Start counting when element is in viewport
+                const observer = new IntersectionObserver(entries => {
+                    if (entries[0].isIntersecting) {
+                        updateCount();
+                    }
+                }, { threshold: 0.5 });
+
+                observer.observe(counter);
+            });
+        });
+
+
+
+
+    </script>
+
+{{-- script --}}
+<script>
+        window.addEventListener("load", function () {
+      const loader = document.getElementById("siteLoader");
+
+      setTimeout(() => {
+        loader.style.transition = "opacity 0.2s ease, visibility 0.2s ease";
+        loader.style.opacity = "0";
+        loader.style.visibility = "hidden";
+
+        setTimeout(() => {
+          loader.remove();
+        }, 800);
+      }, 900);
+    });
+
+</script>
 </html>
+

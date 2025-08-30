@@ -169,7 +169,7 @@
     color:#777;
     background:#fcfcfc;
   }
-  .ib-empty a { color:#b10937; text-decoration: none; }
+  .ib-empty a { color:#1d3a7d ; text-decoration: none; }
   .ib-empty a:hover { text-decoration: underline; }
 
   /* modal image */

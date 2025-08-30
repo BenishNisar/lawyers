@@ -68,7 +68,7 @@
 }
 
 .add-new-btn:hover {
-    background-color:#fc9928;;
+    background-color:#fc9928;
     color: white;
 }
 
@@ -103,7 +103,7 @@
 
     /* Spacing for action icons */
     .actions i {
-        color: #86092b;
+        color: #1d3a7d ;
         margin: 0 4px;
         cursor: pointer;
     }

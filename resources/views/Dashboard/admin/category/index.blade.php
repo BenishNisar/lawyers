@@ -77,7 +77,7 @@
         justify-content: center;
     }
     .actions i {
-        color: #86092b;
+        color: #1d3a7d ;
         margin: 0 4px;
         cursor: pointer;
     }

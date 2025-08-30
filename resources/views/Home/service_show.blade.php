@@ -180,7 +180,7 @@
   .svc-actions{
     margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:10px
   }
-  .svc-cta{display:inline-block}
+  .svc-cta{display:inline-block;color:black}
   .svc-share{display:flex;align-items:center;gap:8px}
   .svc-share a{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border:1px solid #ddd;border-radius:50%}
 

@@ -50,7 +50,7 @@
 
         <div class="mb-3" style="display:flex;justify-content:flex-end;margin-top:1vh;">
             <a href="{{ route('Dashboard.admin.banner.index') }}" class="btn square-button" style="background-color:#6c757d;color:white;margin-right:10px;">Cancel</a>
-            <button style="background-color:#b10937;color:white;" type="submit" class="btn square-button">Save</button>
+            <button style="background-color:#1d3a7d ;color:white;" type="submit" class="btn square-button">Save</button>
         </div>
     </form>
 </div>

@@ -217,7 +217,7 @@
         						<li><a href="{{ asset("/administration") }}" class="tran3s">Administration</a></li>
         						<li><a href="{{ asset("/softwares") }}" class="tran3s">Softwares</a></li>
         						<li><a href="{{ asset("/clients") }}" class="tran3s">Clients</a></li>
-        						<li><a href="{{ asset("/downloads") }}" class="tran3s">Downloads</a></li>
+        						<li><a href="{{ route("Home.downloads") }}" class="tran3s">Downloads</a></li>
         						<li><a href="{{ asset("/careers") }}" class="tran3s active">Jobs & Careers</a></li>
         						<li><a href="{{ asset("/blogs") }}" class="tran3s">Blogs</a></li>
         					</ul> <!-- End of .page_list -->

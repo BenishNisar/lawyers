@@ -85,7 +85,7 @@
         justify-content: center;
     }
     .actions i {
-        color: #86092b;
+        color: #1d3a7d ;
         margin: 0 4px;
         cursor: pointer;
     }
@@ -110,7 +110,7 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    {{-- <th>ID</th> --}}
                     {{-- <th>Author</th>
                     <th>Date</th> --}}
                     <th>Title</th>
@@ -124,7 +124,7 @@
             <tbody>
                  @foreach ($blogs as $blog)
                <tr>
-                    <td>{{ $blog->id }}</td>
+                    {{-- <td>{{ $blog->id }}</td> --}}
                     {{-- <td>{{ $blog->author }}</td>
                     <td>{{ $blog->date }}</td> --}}
                     <td>{{ $blog->title }}</td>

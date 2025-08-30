@@ -150,7 +150,7 @@
 
             <div class="d-flex justify-content-end mt-3">
                 <a href="{{ url('blog') }}" class="btn btn-secondary custom-btn">Cancel</a>
-                <button type="submit" class="btn btn-danger custom-btn ms-2">Save</button>
+                <button type="submit" style="background-color:#1d3a7d ;color:white;"  class="btn custom-btn ms-2">Save</button>
             </div>
         </form>
 

@@ -40,7 +40,7 @@
 
       <div class="d-flex justify-content-end mt-2">
         <a href="{{ route('Dashboard.admin.contact-settings.index') }}" class="btn btn-secondary">Cancel</a>
-        <button type="submit" class="btn btn-danger ms-2">Save</button>
+        <button type="submit"  style="background-color:#1d3a7d ;color:white;" class="btn  ms-2">Save</button>
       </div>
     </form>
   </div>

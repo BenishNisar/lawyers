@@ -61,7 +61,7 @@
       </div>
       <div class="text-end">
         <a href="{{ route('Dashboard.admin.downloads-mgmt.index') }}" class="btn btn-secondary">Cancel</a>
-        <button class="btn btn-primary" style="background:#b10937;border-color:#b10937;">Save</button>
+        <button class="btn" style="background-color:#1d3a7d ;color:white;">Save</button>
       </div>
     </form>
   </div>

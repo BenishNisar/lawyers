@@ -86,7 +86,7 @@
 
         <div class="text-end mt-3">
           <a href="{{ route('Dashboard.admin.services-mgmt.index') }}" class="btn btn-secondary">Cancel</a>
-          <button class="btn btn-danger">Save</button>
+          <button class="btn" style="background-color: #1d3a7d;color:white;">Save</button>
         </div>
       </form>
     </div>

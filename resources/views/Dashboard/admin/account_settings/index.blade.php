@@ -38,7 +38,7 @@
     }
     .form-control:focus {
         outline: none;
-        border-color: #b10937;
+        border-color: #1d3a7d ;
         box-shadow: 0 0 0 2px rgba(177, 9, 55, 0.1);
     }
     .text-danger {

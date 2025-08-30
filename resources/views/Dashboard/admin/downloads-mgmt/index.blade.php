@@ -39,7 +39,7 @@
     }
 
     .actions { display:flex; justify-content:center; gap:6px; }
-    .actions i { color:#86092b; cursor:pointer; }
+    .actions i { color:#1d3a7d ; cursor:pointer; }
     .actions i:hover { transform:scale(1.08); color:gray; }
 </style>
 
